@@ -9,7 +9,7 @@ Go ahead, produce delightful books that work everywhere. Like it were an app!
 Visit the [Bookiza Website](http://bookiza.io) for more details.
 
 
-![alt tag](https://raw.githubusercontent.com/bookiza/bookiza/master/crust/images/bookiza.png)
+![alt tag](https://raw.githubusercontent.com/bookiza/bookiza/master/assets/images/bookiza.png)
 
 ### Support
 
