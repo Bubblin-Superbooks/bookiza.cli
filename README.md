@@ -105,7 +105,7 @@ Bookiza lets you compose your manuscript with any preprocessor or engine you lik
 When you register bookiza (`$ bookiza register` or `$ b z` ) it will automatically set up the following global runcom (.rc) file at the root. Bookiza will pick up the mode for its generators from this `arc` file.
 
 ```
-$ vi .bookizarc
+\# $ vi .bookizarc
 
 {
   "token": "",
@@ -134,7 +134,7 @@ As you can see, configuring bookiza is as simple as setting the `mode` to use pr
 Similarly, editing mode can also be set on per book basis with the following `rc` configuration inside the root of your project: 
 
 ```
-vi .bookrc
+\# $ vi .bookrc
 
 {
   "mode": {
