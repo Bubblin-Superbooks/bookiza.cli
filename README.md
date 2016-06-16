@@ -19,6 +19,13 @@ Here are some [demo books](https://bubbl.in/books) created by our community.
 
 Despite ubiquity our effort with superbooks points mostly to yielding best reading experiences on tablets i.e. iPads(iOS 7+), Kindle 3 (Silk) and Android 5.0+ phablets. Because, well, even though it's great to support desktops, smartphones, TVs and whatnot, the most ideal situation and surface for reading books is the tablet. 
 
+### Documentation
+
+Full documentation is available [here](https://bookiza.github.io/docs/) and [here](https://bubbl.in/cover/official-handbook-by-marvin-danig) and [here](https://bubbl.in/cover/bookiza-framework-by-marvin-danig). 
+
+A quick tutorial on how to write superbooks is [here](https://marvindanig.svbtle.com/how-to-write-superbooks). 
+
+
 ### What you'll need
 
 node > 6.2.1, git-scm, bubblin's `api_key` and a unixy-style shell/terminal.
@@ -95,16 +102,51 @@ Bookiza lets you compose your manuscript with any preprocessor or engine you lik
 
 #### `.bookizarc`
 
+When you register bookiza (`$ bookiza register` or `$ b z` ) it will automatically set up the following global runcom (.rc) file at the root. Bookiza will pick up the mode for its generators from this `arc` file.
 
+```
+$ vi .bookizarc
+
+{
+  "token": "",
+  "username": "",
+  "email": "",
+  
+  "mode": {
+    "HTML": "html",   # markdown, haml, pug etc.
+    "CSS": "css",
+    "JS": "js",
+    "HEAD": "html"
+  },
+
+  "urls": {
+    "registrationURL": "https://bubbl.in/api/register",
+    "baseURL": "https://bubbl.in/api/books/"
+  }
+}
+
+```
+
+As you can see, configuring bookiza is as simple as setting the `mode` to use preprocessors of your liking. See full list of templating engines & preprocessors that are currently available. 
 
 #### `.bookrc`
 
+Similarly, editing mode can also be set on per book basis with the following `rc` configuration inside the root of your project: 
 
-### Documentation
+```
+vi .bookrc
 
-A quick tutorial on how to write superbooks is [here](https://marvindanig.svbtle.com/how-to-write-superbooks). 
+{
+  "mode": {
+    "HTML": "html",
+    "CSS": "css",
+    "JS": "js",
+    "HEAD": "html"
+  }
+}
 
-Documentation is available [here](https://bookiza.github.io/docs/) and [here](https://bubbl.in/cover/official-handbook-by-marvin-danig) and [here](https://bubbl.in/cover/bookiza-framework-by-marvin-danig). 
+```
+In case of conflict of modes between `.bookrc` and `.bookizarc` the book_level configuration i.e. `.bookrc` shall prevail.
 
 ### What is Bookiza?
 
