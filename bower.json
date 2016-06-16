@@ -1,0 +1,33 @@
+{
+  "name": "bookiza",
+  "version": "xx.xx.xx",
+  "description": "A book baking tool",
+  "homepage": "http://bookiza.io",
+  "logo": {
+    "file": "./assets/images/bookiza.png"
+  },  
+  "bin": {
+    "bookiza": "./bin/bin.js",
+    "b": "./bin/bin.js"
+  },
+  "keywords": [
+    "bookiza",
+    "book",
+    "writing",
+    "tool",
+    "manuscript",
+    "baking",
+    "framework",
+    "superbooks",
+    "CLI"
+  ],
+  "ignore": [
+    ".gitignore",
+    "bower.json",
+    "package.json",
+    "node_modules"
+  ],
+  "repository": "git+https://github.com/bookiza/bookiza.git",
+  "license": "TBD",
+  "author": "Marvin Danig <marvin@bubbl.in>"
+}
