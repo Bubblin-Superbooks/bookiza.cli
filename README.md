@@ -108,21 +108,21 @@ Wordprocessors trump the flexibility that is required for books, comics & magazi
 
 We also wanted books to feel native on the new web -- not like websites that pretend to be books. Be one that handles long form correctly and scales across all the devices and desktops out there, *ala* - responsive, adaptive and scalable (with or without touch capability). 
 
-__&#10049; Fun fact: A framework also ensures that we can stick to our existing development toolchain to mint books. 
+:metal::point_right: A framework with a powerful CL interface also ensures that we can use our existing developer toolchain to mint and print books. 
 
 
-#### What it's not
+#### What it is not.
 
-__&#10084; Bookiza is not another javascript framework (thankfully) for mobile or app development. It is also not a blogging solution. If you wish to write short-form essays (1-3 pages or so) we recommend you to go for a blog instead. 
+:book: Bookiza is not yet another javascript framework (thankfully) for mobile or app development. It doesn't prescribed a pattern or emphasizes MVC or anything like that. Bookiza is also not a blogging solution. If you wish to write short-form essays or blogposts of upto 3-4 pages (or so) we recommend you to go for a blog instead. 
 
 At the moment bookiza will bake manuscripts that are at least 4 pages long. Read more about Superbooks on [Bubblin](https://bubbl.in). 
 
 
 ### Obsession
 
-Bookiza is *obsessive* about running editions and quick turnarounds. Using instant edit2publish state of web to the maximum. Our goal is to optimize books on the web, make it friendlier for people to read, write and connect. Provide a flexibility that book writers haven't had for the last twenty years. A framework that decidely leaves behind the old-school idea of downloading-a-lifeless-artifact called ebook that is nothing but a dull file sponsored by an even older lobby group that wants physical books to thrive and remain on top!. 
+Bookiza is *obsessive* about live book editions and quick manuscript turnarounds. Using instant edit2publish state of web to the maximum. Our goal is to optimize books on the web, make it friendlier for people to read, write and connect. Provide a flexibility that book writers haven't had for the last twenty years. A framework that decidely leaves behind the old-school idea of downloading-a-lifeless-artifact called ebook that is nothing but a dull file sponsored by an even older lobby group that wants physical books to thrive and remain on top!. 
 
-We want to focus instead on a future where web and books are unified, like a single resource that is easy to access, search and consume anywhere.
+We want to focus on a future where web and books are unified, in a single resource that is both accessible and available everywhere.
 
 
 #### Features
@@ -186,4 +186,6 @@ async, superagent, progress, co-prompt, co, path, fs, chalk, commander, string, 
 
 ### LICENSE
 
-Bookiza is dual licensed under the MIT Open Source license. For more information, see the [LICENSE](https://github.com/bookiza/bookiza/blob/master/MIT-license.txt) in this repository. <TBD>
+TBD.
+
+Bookiza is dual licensed. under the MIT Open Source license. For more information, see the [LICENSE](https://github.com/bookiza/bookiza/blob/master/MIT-license.txt) in this repository. <TBD>
