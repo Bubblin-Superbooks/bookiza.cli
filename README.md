@@ -86,9 +86,16 @@ Feel free to use templates to kickstart your book/magazine in a best possible wa
 
 ### Configuration
 
-Default, both Bookiza and Bubblin favor only the building blocks of web i.e. HTML, CSS & JavaScript. Infact Bubblin accepts only clean and compiled HTML, CSS & JS to render the manuscript as books. No preprocessor jugglery is allowed on live site that's meant for the readers!
+Bookiza and Bubblin default to only the building blocks of web i.e. HTML, CSS & JavaScript. Infact Bubblin accepts only clean and compiled HTML, CSS & JS to render books. 
+
+> No preprocessor jugglery is allowed on live books that're meant for the readers!
+
+Bookiza lets you compose your manuscript with any preprocessor or engine you like. There are two ways to configure Bookiza so as to cater to your most general writing needs and at times, needs that are specific to a particular book. 
+
 
 #### `.bookizarc`
+
+
 
 #### `.bookrc`
 
