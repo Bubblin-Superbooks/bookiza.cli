@@ -2,9 +2,9 @@
 
 Quick and beautiful books. *Everywhere*. `Responsive` by default. 
 
-Bookiza is a lightweight framework that cuts down your book writing & publishing time by half. HALF, no less! It's a book "baking tool" implementing some of the best design and development strategies in the world. 
+Bookiza is a lightweight node framework that cuts down your book writing & publishing time by half. HALF, no less! It's a book *baking tool* that implements some of the best design and development techniques in the world into the art of book writing. 
 
-Go ahead, produce delightful books that work everywhere. Like it were an app! 
+Go ahead, produce delightful books that work [everywhere](https://bubbl.in/support). It's a single page app! 
 
 Visit the [Bookiza Website](http://bookiza.io) for more details.
 
@@ -13,7 +13,7 @@ Visit the [Bookiza Website](http://bookiza.io) for more details.
 
 ### Support
 
-Books written using Bookiza are [supported](https://bubbl.in/support) on every major device, tablet and desktop. All it needs is a modern browser and an Internet connection (This will change!).
+Books written using Bookiza are [supported](https://bubbl.in/support) on every major device, tablet and desktop out there. All it needs is a modern browser and an Internet connection (This will change!).
 
 Here are some [demo books](https://bubbl.in/books) created by our community.
 
@@ -49,22 +49,22 @@ Provide your Bubblin credentials to connect to its sweet POST API. You're all se
 To bootstrap new project, run:
 
 ```bash
-$ bookiza new MY-AWESOME-BOOK-NAME -l 12        # Creates project with 12 fresh leafs (24 pages) inside `manuscript/`.
+$ bookiza new MY-AWESOME-BOOK --leafs 12 --template comics        # Creates project with 12 fresh leafs (24 pages) inside `manuscript/` with a comics template.
 ```
 
 `cd` into the project and:
 
 ```bash
-$ bookiza server                                # Opens http://localhost:4567 on your browser!
+$ bookiza server                  # Opens http://localhost:4567 on your browser!
 ```
 
-Open it on your favorite editor (Sublime/Atom) and write away! Once your book is ready (or it has some changes), hit:
+Open the project on your favorite text editor (Sublime/Atom) and write away! Once you're ready (or even if you're not) hit:
 
 ```bash
 $ bookiza publish
 ```
 
-Your book will be *POST'ed / PATCH'ed* on Bubblin instantly.
+Your book will be *POST'ed / PATCH'ed* over Bubblin instantly, in real time.
 
 
 To see full CLI documentation with:
@@ -77,11 +77,20 @@ That's it.
 
 ### Templates
 
-Bookiza comes along with several FREE, responsive and scalable [templates](https://github.com/bookiza/templates) so that you don’t have to do the layouts yourself. Feel free to use any to kickstart your book with a template that best presents your story and ensures that your book is responsive and [supported](https://bubbl.in/support) on as many devices as possible.
+Bookiza comes along with several FREE, responsive and scalable [templates](https://github.com/bookiza/templates) so that you don’t have to do the layouts yourself. 
 
-By default, both Bookiza and Bubblin favor building blocks of web i.e. HTML, CSS & JavaScript. Infact Bubblin accepts only compiled HTML, CSS & JS to render the books live. No preprocessor jugglery!
+Feel free to use templates to kickstart your book/magazine in a best possible way and ensure that your work is responsive and [scalable](https://bubbl.in/support) on as many devices as possible.
 
 > We’re accepting new templates for all kinds of longform. Feel free to [fork](https://github.com/bookiza/templates#fork-destination-box) and submit pull requests per following [rules](https://github.com/bookiza/templates#rules) for any kind of book that you may have worked on. 
+
+
+### Configuration
+
+Default, both Bookiza and Bubblin favor only the building blocks of web i.e. HTML, CSS & JavaScript. Infact Bubblin accepts only clean and compiled HTML, CSS & JS to render the manuscript as books. No preprocessor jugglery is allowed on live site that's meant for the readers!
+
+#### `.bookizarc`
+
+#### `.bookrc`
 
 
 ### Documentation
