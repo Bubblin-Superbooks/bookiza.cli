@@ -2,11 +2,16 @@
 
 Quick and beautiful books. *Everywhere*. `Responsive` by default. 
 
-Bookiza is a lightweight node framework that cuts down your book writing & publishing time by half. HALF, no less! It's a book *baking tool* that implements some of the best design and development techniques in the world into the art of book writing. 
+Bookiza is a book *baking tool*. It is a lightweight javascript (node 6+) framework that helps you compose book apps (SPAs). 
 
-Go ahead, produce delightful books that work [everywhere](https://bubbl.in/support). It's a single page app! 
+# Advantage
+Bookiza can cut your book writing & publishing time down by half. By HALF!, no less. Integrate some of the best design and development techniques of the world into your journey of book writing. 
 
-Visit the [Bookiza Website](http://bookiza.io) for more details.
+Get your developer & designer friends to work and collaborate with you.
+
+Produce delightful books that work [everywhere](https://bubbl.in/support)! 
+
+> Visit the [Bookiza Website](http://bookiza.io) for more details.
 
 
 ![alt tag](https://raw.githubusercontent.com/bookiza/bookiza/master/assets/images/bookiza.png)
@@ -246,4 +251,4 @@ async, superagent, progress, co-prompt, co, path, fs, chalk, commander, string, 
 
 TBD.
 
-Bookiza is dual licensed. under the MIT Open Source license. For more information, see the [LICENSE](https://github.com/bookiza/bookiza/blob/master/MIT-license.txt) in this repository. <TBD>
+Bookiza is dual licensed. Under the MIT Open Source license and Open . For more information, see the [LICENSE](https://github.com/bookiza/bookiza/blob/master/MIT-license.txt) in this repository. <TBD>
