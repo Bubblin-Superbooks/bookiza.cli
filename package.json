@@ -1,6 +1,6 @@
 {
   "name": "bookiza",
-  "version": "0.0.21",
+  "version": "0.0.50",
   "description": "A book baking tool",
   "logo": {
     "file": "./assets/images/bookiza.png"
@@ -24,7 +24,7 @@
     "superbooks",
     "CLI"
   ],
-  "license": "MIT",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/bookiza/bookiza/issues"
   },
