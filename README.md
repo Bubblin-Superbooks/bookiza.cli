@@ -249,6 +249,4 @@ async, superagent, progress, co-prompt, co, path, fs, chalk, commander, string, 
 
 ### LICENSE
 
-TBD.
-
-Bookiza is dual licensed. Under the MIT Open Source license and Open . For more information, see the [LICENSE](https://github.com/bookiza/bookiza/blob/master/MIT-license.txt) in this repository. <TBD>
+TBD. *UNLICENSED* 
