@@ -5,7 +5,7 @@ Quick and beautiful books. *Everywhere*. `Responsive` by default.
 Bookiza is a book *baking tool*. It is a lightweight javascript (node 6+) framework that helps you compose book apps (SPAs). 
 
 # Advantage
-Bookiza can cut your book writing & publishing time down by half. By HALF!, no less. Integrate some of the best design and development techniques of the world into your journey of book writing. 
+Bookiza cuts your book writing & publishing time down by half. By HALF!, no less. Bringing in some of the best design and development techniques in the world, bookiza will turn your saga into a timeless product, an eternal journey of … no wait, an offline-first, well-paginated simple book app. 
 
 Get your developer & designer friends to work and collaborate with you.
 
@@ -57,11 +57,18 @@ $ bookiza register or $ b z
 
 Provide your Bubblin credentials to connect to its sweet POST API. You're all set!
 
+To check:
+
+```bash
+$ bookiza whoami or $ b w
+```
+
+
 ### Getting started
 To bootstrap new project, run:
 
 ```bash
-$ bookiza new MY-AWESOME-BOOK --leafs 12 --template comics        # Creates project with 12 fresh leafs (24 pages) inside `manuscript/` with a comics template.
+$ bookiza new MY-AWESOME-BOOK --leafs 12 --template comics        # Creates a project with 12 fresh leafs (24 pages) inside `manuscript/` and applies a `comics` template.
 ```
 
 `cd` into the project and:
@@ -76,7 +83,7 @@ Open the project on your favorite text editor (Sublime/Atom) and write away! Onc
 $ bookiza publish
 ```
 
-Your book will be *POST'ed / PATCH'ed* over Bubblin instantly, in real time.
+Your book will be *POST'ed / PATCH'ed* over Bubblin instantly, in real time. Keep updating!
 
 
 To see full CLI documentation with:
