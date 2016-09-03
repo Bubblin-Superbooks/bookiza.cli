@@ -1,0 +1,432 @@
+# ---------------- Works, but deprecated-----------#
+# -------------------------------------------------#
+#            BOOKIZA SUPERBOOK WRITERS             #
+# -------------------------------------------------#
+
+
+# ---------- main() class --------- #
+
+bookiza() {
+  case "$1" in
+    new)
+      new "$@"
+      ;;         
+    insert)
+      insert "$@"
+      ;;         
+    add)
+      add "$@"
+      ;;             
+    remove)
+      remove "$@"
+      ;;
+    clip)
+      clip "$@"
+      ;;
+    length)
+      length
+      ;;
+    status)
+      status
+      ;;
+    push)
+      push
+      ;;        
+    publish)
+      publish
+      ;;        
+    server)
+      server 
+      ;;   
+    help)
+      help      
+      ;;         
+    update)
+      update
+      ;;
+    -v)
+      version
+      ;;
+    *)
+      echo $"Usage: $0 { new | insert | length | remove | clip | status | push | publish | server | help | update | -v }"
+      echo $"Try: $ bookiza help "
+  esac
+}
+
+#--------- NEW PROJECT ---------#
+
+new() {
+  args=("$@")
+
+  echo "Setting up project ........"
+
+  PROJECTNAME=${args[1]}
+
+  readValidProjectName "$PROJECTNAME"
+
+  setupProject "$PROJECTNAME"
+
+  BOOKLENGTH=${args[2]}
+
+  readValidBookLength "$BOOKLENGTH"
+  
+  (pickUpTemplate; cd manuscript || exit; START_AT=1; createPages "$START_AT" "$BOOKLENGTH")
+
+  setupNPM
+
+  setupRepo
+}
+
+#-------- project name ------ ##
+
+isValidArgument() {
+  test "$1" 
+}
+
+readValidProjectName() {
+  PROJECTNAME=$1
+  while ! isValidArgument "$PROJECTNAME"; do
+    echo -e "Project name?: \c"
+    read -r PROJECTNAME
+  done
+}
+
+setupProject() {
+  mkdir -p "$1" && cd "$1" && touch README.md license.txt .gitignore && mkdir -p "trash" "cover" "templates" "assets" "manuscript" || return $?
+  echo "# $1" >> README.md
+  (cd templates || exit; 
+    touch template.html head.html template.css template.js; 
+    echo "body{background:rgba(200, 235, 255, 0.99); margin:0 0; overflow:hidden;}" >> template.css)
+  (cd assets || exit; mkdir -p "css" "javascript" "images")
+}
+
+## ------ Book length ------ ##
+
+readValidBookLength() {
+  BOOKLENGTH=$1
+
+  while ! { isValidArgument "$BOOKLENGTH" && isArgumentNumeric "$BOOKLENGTH" && isArgumentEvenNumber "$BOOKLENGTH"; }; do
+    echo -e 'Book length?: \c'
+    read -r BOOKLENGTH
+  done
+
+}
+
+isArgumentNumeric() {
+  ARGUMENT=$1
+  reg='^[0-9]+$'
+  if ! [[ $ARGUMENT =~ $reg ]] ; then
+    return 1
+  else
+    return 0
+  fi
+}
+
+isArgumentEvenNumber() {
+  ARGUMENT=$1
+  if [ $((ARGUMENT%2)) -eq 0 ] ; then
+    return 0
+  else
+    return 1
+  fi  
+}
+
+createPages() {
+  args=("$@")
+
+  START_AT=${args[0]}
+
+  END_AT=${args[1]}
+
+  q=0
+  while [ "$q" -lt "$END_AT" ]; do
+    mkdir -p "page-$((START_AT+q))"
+    (cd "page-$((START_AT+q))" || exit; touch "body.html" && touch "style.css"; echo "$HTML_TEMPLATE" >> body.html)
+    q=$((q+1))
+  done
+}
+
+pickUpTemplate() {
+  HTML_TEMPLATE=$(cd "templates" || exit; cat template.html)
+}
+
+setupNPM() {
+  cp -R "$HOME/.bookiza/source" "."
+}
+
+setupRepo() {
+  git init
+  git add . -A
+  git commit -am "First commit: Setup new book project" --quiet  
+  readValidRepoURL "$REPO_URL"
+  git remote add origin "$REPO_URL"
+  git push -u origin master
+  echo "Project is ready!"   
+}
+
+readValidRepoURL() {
+  REPO_URL=$1
+  while ! isValidArgument "$REPO_URL"; do
+    echo -e "Repository URL?: \c"
+    read -r REPO_URL
+  done
+}
+
+
+# ---------- INSERT PAGES --------- #
+
+insert() {
+  args=("$@")
+
+  INSERT_AT=${args[1]}
+
+  readValidInsertAt "$INSERT_AT"
+  
+  NUMBER_OF_PAGES=${args[2]}
+
+  readValidNumberOfPages "$NUMBER_OF_PAGES"
+
+  (cd manuscript || exit; pushStackDown "$INSERT_AT" "$NUMBER_OF_PAGES")
+
+  (pickUpTemplate; cd manuscript || exit; createPages "$INSERT_AT" "$NUMBER_OF_PAGES")
+
+}
+
+readValidInsertAt() {
+  INSERT_AT=$1
+
+  while ! { isValidArgument "$INSERT_AT" && isArgumentNumeric "$INSERT_AT" && isArgumentInRange "$INSERT_AT"; }; do
+    echo -e 'Insert at?: \c'
+    read -r INSERT_AT
+  done
+}
+
+isArgumentInRange() {
+  ARGUMENT=$1  
+
+  BOOKLENGTH=$(cd manuscript || exit; getLength; echo $BOOKLENGTH)
+
+  if [[ "$ARGUMENT" -le "$BOOKLENGTH" ]] && [[ "$ARGUMENT" -gt 0 ]] ; then
+    return 0
+  else
+    return 1
+  fi
+ 
+}
+
+readValidNumberOfPages() {
+  NUMBER_OF_PAGES=$1
+  while ! { isValidArgument "$NUMBER_OF_PAGES" && isArgumentNumeric "$NUMBER_OF_PAGES" && isArgumentEvenNumber "$NUMBER_OF_PAGES"; }; do
+    echo -e 'Number of pages?: \c'
+    read -r NUMBER_OF_PAGES
+  done
+}
+
+
+pushStackDown() {
+  args=("$@")
+  echo INSERT_AT: "${args[0]}", [ NUMBER_OF_PAGES: "${args[1]}" ]
+
+  p="$INSERT_AT"
+
+  if [ -d "page-$p"  ]; then
+    getLength
+    q="$BOOKLENGTH"
+
+    while [ "$q" -ge "$p" ]; do
+      mv "page-$((q))" "page-$((q+NUMBER_OF_PAGES))"
+      q=$((q-1))
+    done
+  fi
+}
+
+
+# ---------- ADD PAGES --------- #
+
+add() {
+  args=("$@")
+
+  NUMBER_OF_PAGES=${args[1]}
+
+  readValidNumberOfPages "$NUMBER_OF_PAGES"
+
+  (pickUpTemplate; cd manuscript || exit; getLength; createPages "$((BOOKLENGTH+1))" "$NUMBER_OF_PAGES")  
+}
+
+
+# --------- REMOVE PAGE_No ----------#
+
+
+remove() {
+  args=("$@")
+
+  REMOVE_AT="${args[1]}"
+
+  readValidRemoveAt "$REMOVE_AT"
+
+  (cd manuscript || exit; deletePage "$REMOVE_AT")
+
+}
+
+readValidRemoveAt() {
+  REMOVE_AT=$1
+  while ! { isValidArgument "$REMOVE_AT" && isArgumentNumeric "$REMOVE_AT" && isArgumentInRange "$REMOVE_AT"; }; do
+    echo -e 'Remove page at?: \c'
+    read -r REMOVE_AT
+  done
+}
+
+deletePage() {
+  PAGE_NO=$1
+  if [ -d "page-$PAGE_NO"  ]; then
+    (mv "page-$PAGE_NO" "../trash/page-$PAGE_NO-$(timestamp)";) 
+
+    m="$PAGE_NO"
+    m=$((m+1))
+
+    until [ ! -d "page-$m"  ]; do
+      mv "page-$((m))" "page-$((m-1))"
+      m=$((m+1))
+    done
+
+    (getLength; createPages "$((BOOKLENGTH+1))" 1)
+  fi
+
+}
+
+timestamp() {
+  date +"%T"
+}
+
+
+# --------- CLIP PAGE_No ----------#
+
+
+clip() {
+  echo "
+    Clip statement not ready. This will remove the page from the manuscript and lower the length of the book by 1"
+}
+
+
+# ---------- BOOKLENGTH --------- #
+
+length() {
+  if [ -d manuscript/ ] ; then
+    (cd manuscript || exit; getLength; echo "Book length is: ${BOOKLENGTH} pages.")
+  else 
+    echo "Manuscript not found, probably not in project root!"
+  fi
+}
+
+getLength() {
+  BOOKLENGTH=1
+  until [ ! -d "page-$((BOOKLENGTH+1))"  ]; do
+    BOOKLENGTH=$((BOOKLENGTH+1))
+  done
+}
+
+# --------- PROJECT STATUS ----------#
+
+status() {
+  git status
+}
+
+
+# --------- PUSH TO REPO ----------#
+
+push() {
+  readValidGitMessage "$MESSAGE"
+  git commit -am "${MESSAGE}"
+  git push
+}
+
+readValidGitMessage() {
+  MESSAGE=$1
+  while ! isValidArgument "$MESSAGE"; do
+    echo -e "Message: \c"
+    read -r MESSAGE
+  done
+}
+
+# --------- PUBLISH TO BUBBLIN ----------#
+
+publish() {
+  echo "# TODO: Expose authenticated POST API on https://bubbl.in"
+  readValidHostURL "$HOST_URL"          # TODO: HOST_URL can be constructed using hyphenated $projectname & author-full-name
+  git remote add origin "$HOST_URL"
+  git push -u origin master
+}
+
+readValidHostURL() {
+  HOST_URL=$1
+  while ! isValidArgument "$HOST_URL"; do
+    echo -e "Bubblin URL?: \c"
+    read -r HOST_URL
+  done
+}
+
+# ---------- LOCAL SERVER --------- #
+
+server() {
+  gulp
+} 
+
+# --------- FRAMEWORK GUIDE --------#
+
+help() {
+  
+echo "
+# -------------------------------------------------#
+#            BOOKIZA SUPERBOOK FRAMEWORK           #
+# -------------------------------------------------#
+"
+echo "
+
+Usage: $ bookiza <command> [<args>]
+  
+Commands glossary: $0 { new | insert | length | remove | status | push | publish | server | help | update | -v }
+
+"
+
+echo "
+  $ bookiza new <hyphenated-project-name> [expected number of pages] 
+    Examples:    
+      1. Project/book name: My-Awesome-Book-Name i.e. use hyphens!
+      2. Book length: 24, 100       (Must be even number. Here's why: https://bubbl.in/book/official-handbook-by-marvin-danig/36)
+      3. Github URL: https://github.com/username/my-new-book.git     
+"
+
+echo "
+  $ bookiza insert [insert_at] [number_of_pages] 
+    Examples:    
+      1. insert_at: 31, 44          (Must be integer)
+      2. number_of_pages: 4, 8      (Must be even number)
+"
+
+echo "
+  $ bookiza add [number_of_pages] 
+    Examples:    
+      1. number_of_pages: 4, 8      (Must be even number)
+"
+
+echo "
+  $ bookiza remove [page_number] 
+    Examples:    
+      1. Removes page at [page_number]: 4, 17      (Must be integer)
+      2. And appends a blank page at the end of the book.
+"
+} 
+
+
+# ---------- UPDATE SCRIPT --------- #
+
+update() {
+  (cd ~/.bookiza || exit; git pull; source ~/.bash_profile; version)
+}
+
+
+# ---------- VERSION --------- #
+
+version() {
+  echo "bookiza 0.0.1"
+}
