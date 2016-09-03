@@ -4,6 +4,12 @@ Quick and beautiful books. *Everywhere*. `Responsive` by default.
 
 Bookiza is a book *baking tool*. It is a lightweight javascript (node 6+) framework that helps you compose books, magazines and comics (SPAs). 
 
+[![Travis](https://img.shields.io/travis/bookiza/bookiza.svg?maxAge=2592000)](https://travis-ci.org/bookiza/bookiza)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![npm](https://img.shields.io/npm/dt/bookiza.svg?maxAge=2592000)](https://www.npmjs.com/package/bookiza)
+![alt tag](https://raw.githubusercontent.com/bookiza/bookiza/master/assets/images/bookiza.png)
+
+
 # Advantage
 Bookiza cuts your book writing & publishing time down by half. By HALF!, no less. Bringing in some of the best design and development techniques in the world, bookiza will turn your saga into a timeless product, an eternal journey of … no wait, an offline-first, well-paginated simple book app. 
 
@@ -13,8 +19,6 @@ Produce delightful books that work [everywhere](https://bubbl.in/support)!
 
 > Visit the [Bookiza Website](http://bookiza.io) for more details.
 
-
-![alt tag](https://raw.githubusercontent.com/bookiza/bookiza/master/assets/images/bookiza.png)
 
 ### Support
 
