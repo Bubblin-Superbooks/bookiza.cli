@@ -58,7 +58,7 @@
     "npm-update-module": "1.0.5",
     "os-homedir": "1.0.2",
     "progress": "1.1.8",
-    "shelljs": "0.7.4",
+    "shelljs": "0.7.5",
     "spawn-npm-install": "1.2.0",
     "superagent": "2.3.0"
   },

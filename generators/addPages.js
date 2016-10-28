@@ -8,9 +8,11 @@ function addPages (startAt, pages, mode) {
   let cssExt = mode.CSS || 'css'
   let javascriptExt = mode.JS || 'js'
 
+  console.log('Extension: ', htmlExt)
+
   let bodyTemplate = ''
 
-  fsp.readFile(path.join('.', 'templates', 'body.html'), { encoding: 'utf-8' })
+  fsp.readFile(path.join('.', 'templates', `body.${htmlExt}`), { encoding: 'utf-8' })
     .then((content) => {
       process.stdout.write(chalk.yellow(`generating [ ${chalk.magenta(pages)} ] blank page(s)… :`))
 
