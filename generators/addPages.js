@@ -8,8 +8,6 @@ function addPages (startAt, pages, mode) {
   let cssExt = mode.CSS || 'css'
   let javascriptExt = mode.JS || 'js'
 
-  console.log('Extension: ', htmlExt)
-
   let bodyTemplate = ''
 
   fsp.readFile(path.join('.', 'templates', `body.${htmlExt}`), { encoding: 'utf-8' })
