@@ -32,7 +32,7 @@ Despite ubiquity our effort with superbooks points mostly to yielding best readi
 
 Full documentation is available [here](https://bookiza.github.io/docs/) and [here](https://bubbl.in/cover/official-handbook-by-marvin-danig) and [here](https://bubbl.in/cover/bookiza-framework-by-marvin-danig). 
 
-A quick tutorial on how to write superbooks is [here](https://marvindanig.svbtle.com/how-to-write-superbooks). 
+A quick tutorial on how to write superbooks is [here](https://marvindanig.wordpress.com/2016/03/17/how-to-write-a-superbook/). 
 
 
 ### What you'll need
