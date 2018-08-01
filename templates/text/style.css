@@ -3,10 +3,11 @@ html, body {
   margin: 0 0;
   overflow: hidden;
   color: #444;
-  font: 4.2vw/1.3 'Josefin Slab', serif;
+  font: 4.2vw/1.25 'EB Garamond', serif;
   height:100vh;
   width:100vw;
 }
+
 
 h1, h2, h3 {
   margin: 1vw 0;
@@ -57,7 +58,7 @@ a:active {
 .leaf {
   height: 100%;
   height: 100vh;
-  width: 100%;  
+  width: 100%;
   width: 100vw;
   margin: auto;
 }
@@ -82,7 +83,7 @@ p {
     margin: 3vw 0;
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
-    hyphens: auto;        
+    hyphens: auto;
 }
 
 p.chapter-begin:first-letter {
@@ -91,8 +92,7 @@ p.chapter-begin:first-letter {
   float: left;
   line-height: 10vw;
   font-size: 25vw;
-  color: hsla(11, 50%, 50%, 1);
-  font-family: 'Luckiest Guy', serif;
+  color: hsla(200, 50%, 50%, 1);
 }
 
 .center {
@@ -110,7 +110,7 @@ blockquote {
     margin: 2vh 0;
     padding: 0;
     quotes: "\201C""\201D""\2018""\2019";
-    color: #666; 
+    color: #666;
     font-weight: 100;
 }
 

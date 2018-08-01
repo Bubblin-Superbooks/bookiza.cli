@@ -1,11 +1,13 @@
-+!~-(function(r) {
-    'use strong';
-    
-    const fs = r('fs');
-    const chalk = r('chalk');
+(function (r) {
+  'use strong'
 
-    fs.readFile('./MIT-license.txt', 'utf8', (err, content) => {
-        console.log(chalk.white(content));
-    });
+  const fse = r('fs-extra')
+  const chalk = r('chalk')
 
-})(require);
+  fse.readFile('./MIT-license.txt', 'utf8', (err, data) => {
+    if (err) {
+      return Error('Couldn\'t read license information.')
+    }
+    console.log(chalk.keyword('orange')(data))
+  })
+})(require)

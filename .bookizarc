@@ -2,7 +2,6 @@
   "token": "",
   "username": "",
   "email": "",
-  
   "mode": {
     "HTML": "html",
     "CSS": "css",
@@ -10,7 +9,7 @@
     "HEAD": "html"
   },
   "urls": {
-    "registrationURL": "https://bubbl.in/api/register",
-    "baseURL": "https://bubbl.in/api/books/"
+    "registrationURL": "https://bubblin.io/api/register",
+    "baseURL": "https://bubblin.io/api/books/"
   }
 }

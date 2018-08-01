@@ -10,13 +10,13 @@ bookiza() {
   case "$1" in
     new)
       new "$@"
-      ;;         
+      ;;
     insert)
       insert "$@"
-      ;;         
+      ;;
     add)
       add "$@"
-      ;;             
+      ;;
     remove)
       remove "$@"
       ;;
@@ -31,16 +31,16 @@ bookiza() {
       ;;
     push)
       push
-      ;;        
+      ;;
     publish)
       publish
-      ;;        
+      ;;
     server)
-      server 
-      ;;   
+      server
+      ;;
     help)
-      help      
-      ;;         
+      help
+      ;;
     update)
       update
       ;;
@@ -69,7 +69,7 @@ new() {
   BOOKLENGTH=${args[2]}
 
   readValidBookLength "$BOOKLENGTH"
-  
+
   (pickUpTemplate; cd manuscript || exit; START_AT=1; createPages "$START_AT" "$BOOKLENGTH")
 
   setupNPM
@@ -80,7 +80,7 @@ new() {
 #-------- project name ------ ##
 
 isValidArgument() {
-  test "$1" 
+  test "$1"
 }
 
 readValidProjectName() {
@@ -94,8 +94,8 @@ readValidProjectName() {
 setupProject() {
   mkdir -p "$1" && cd "$1" && touch README.md license.txt .gitignore && mkdir -p "trash" "cover" "templates" "assets" "manuscript" || return $?
   echo "# $1" >> README.md
-  (cd templates || exit; 
-    touch template.html head.html template.css template.js; 
+  (cd templates || exit;
+    touch template.html head.html template.css template.js;
     echo "body{background:rgba(200, 235, 255, 0.99); margin:0 0; overflow:hidden;}" >> template.css)
   (cd assets || exit; mkdir -p "css" "javascript" "images")
 }
@@ -128,7 +128,7 @@ isArgumentEvenNumber() {
     return 0
   else
     return 1
-  fi  
+  fi
 }
 
 createPages() {
@@ -157,11 +157,11 @@ setupNPM() {
 setupRepo() {
   git init
   git add . -A
-  git commit -am "First commit: Setup new book project" --quiet  
+  git commit -am "First commit: Setup new book project" --quiet
   readValidRepoURL "$REPO_URL"
   git remote add origin "$REPO_URL"
   git push -u origin master
-  echo "Project is ready!"   
+  echo "Project is ready!"
 }
 
 readValidRepoURL() {
@@ -181,7 +181,7 @@ insert() {
   INSERT_AT=${args[1]}
 
   readValidInsertAt "$INSERT_AT"
-  
+
   NUMBER_OF_PAGES=${args[2]}
 
   readValidNumberOfPages "$NUMBER_OF_PAGES"
@@ -202,7 +202,7 @@ readValidInsertAt() {
 }
 
 isArgumentInRange() {
-  ARGUMENT=$1  
+  ARGUMENT=$1
 
   BOOKLENGTH=$(cd manuscript || exit; getLength; echo $BOOKLENGTH)
 
@@ -211,7 +211,7 @@ isArgumentInRange() {
   else
     return 1
   fi
- 
+
 }
 
 readValidNumberOfPages() {
@@ -250,7 +250,7 @@ add() {
 
   readValidNumberOfPages "$NUMBER_OF_PAGES"
 
-  (pickUpTemplate; cd manuscript || exit; getLength; createPages "$((BOOKLENGTH+1))" "$NUMBER_OF_PAGES")  
+  (pickUpTemplate; cd manuscript || exit; getLength; createPages "$((BOOKLENGTH+1))" "$NUMBER_OF_PAGES")
 }
 
 
@@ -279,7 +279,7 @@ readValidRemoveAt() {
 deletePage() {
   PAGE_NO=$1
   if [ -d "page-$PAGE_NO"  ]; then
-    (mv "page-$PAGE_NO" "../trash/page-$PAGE_NO-$(timestamp)";) 
+    (mv "page-$PAGE_NO" "../trash/page-$PAGE_NO-$(timestamp)";)
 
     m="$PAGE_NO"
     m=$((m+1))
@@ -313,7 +313,7 @@ clip() {
 length() {
   if [ -d manuscript/ ] ; then
     (cd manuscript || exit; getLength; echo "Book length is: ${BOOKLENGTH} pages.")
-  else 
+  else
     echo "Manuscript not found, probably not in project root!"
   fi
 }
@@ -351,7 +351,7 @@ readValidGitMessage() {
 # --------- PUBLISH TO BUBBLIN ----------#
 
 publish() {
-  echo "# TODO: Expose authenticated POST API on https://bubbl.in"
+  echo "# TODO: Expose authenticated POST API on https://bubblin.io"
   readValidHostURL "$HOST_URL"          # TODO: HOST_URL can be constructed using hyphenated $projectname & author-full-name
   git remote add origin "$HOST_URL"
   git push -u origin master
@@ -369,12 +369,12 @@ readValidHostURL() {
 
 server() {
   gulp
-} 
+}
 
 # --------- FRAMEWORK GUIDE --------#
 
 help() {
-  
+
 echo "
 # -------------------------------------------------#
 #            BOOKIZA SUPERBOOK FRAMEWORK           #
@@ -383,39 +383,39 @@ echo "
 echo "
 
 Usage: $ bookiza <command> [<args>]
-  
+
 Commands glossary: $0 { new | insert | length | remove | status | push | publish | server | help | update | -v }
 
 "
 
 echo "
-  $ bookiza new <hyphenated-project-name> [expected number of pages] 
-    Examples:    
+  $ bookiza new <hyphenated-project-name> [expected number of pages]
+    Examples:
       1. Project/book name: My-Awesome-Book-Name i.e. use hyphens!
-      2. Book length: 24, 100       (Must be even number. Here's why: https://bubbl.in/book/official-handbook-by-marvin-danig/36)
-      3. Github URL: https://github.com/username/my-new-book.git     
+      2. Book length: 24, 100       (Must be even number. Here's why: https://bubblin.io/book/official-handbook-by-marvin-danig/36)
+      3. Github URL: https://github.com/username/my-new-book.git
 "
 
 echo "
-  $ bookiza insert [insert_at] [number_of_pages] 
-    Examples:    
+  $ bookiza insert [insert_at] [number_of_pages]
+    Examples:
       1. insert_at: 31, 44          (Must be integer)
       2. number_of_pages: 4, 8      (Must be even number)
 "
 
 echo "
-  $ bookiza add [number_of_pages] 
-    Examples:    
+  $ bookiza add [number_of_pages]
+    Examples:
       1. number_of_pages: 4, 8      (Must be even number)
 "
 
 echo "
-  $ bookiza remove [page_number] 
-    Examples:    
+  $ bookiza remove [page_number]
+    Examples:
       1. Removes page at [page_number]: 4, 17      (Must be integer)
       2. And appends a blank page at the end of the book.
 "
-} 
+}
 
 
 # ---------- UPDATE SCRIPT --------- #

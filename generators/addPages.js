@@ -1,56 +1,55 @@
 const path = require('path')
-const fsp = require('fs-promise')
+const fse = require('fs-extra')
 const chalk = require('chalk')
 
-function addPages (startAt, pages, mode) {
-  let htmlExt = mode.HTML || 'html'
-  let headExt = mode.HEAD || 'html'
-  let cssExt = mode.CSS || 'css'
-  let javascriptExt = mode.JS || 'js'
+function addPages({ startAt, pages, mode }) {
+    let htmlExt = mode.HTML || 'html'
+    let cssExt = mode.CSS || 'css'
 
-  let bodyTemplate = ''
+    // let headExt = mode.HEAD || 'html'
+    // let javascriptExt = mode.JS || 'js'
 
-  fsp.readFile(path.join('.', 'templates', `body.${htmlExt}`), { encoding: 'utf-8' })
-    .then((content) => {
-      process.stdout.write(chalk.yellow(`generating [ ${chalk.magenta(pages)} ] blank page(s)… :`))
+    let bodyTemplate = ''
 
-      bodyTemplate = content; // Set bodyTemplate for next promise. Ugly :(
+    fse.readFile(path.join('.', 'templates', `body.${htmlExt}`), { encoding: 'utf-8' })
+        .then(content => {
+            process.stdout.write(chalk.yellow(`Generating [ ${chalk.magenta(pages)} ] blank page(s)… :`))
 
-      // Blank manuscript structure:
-      let blankPages = []
+            bodyTemplate = content // Set bodyTemplate for next promise. Ugly :(
 
-      for (let i = startAt, endAt = startAt + pages; i < endAt; i++) {
-        let pageDir = path.join('.', 'manuscript', `page-${i}`)
+            // Blank manuscript structure:
+            let blankPages = []
 
-        let thisDir = fsp.mkdirs(pageDir); // promise { pending }
+            for (let i = startAt, endAt = startAt + pages; i < endAt; i++) {
+                let pageDir = path.join('.', 'manuscript', `page-${i}`)
 
-        blankPages.push(thisDir)
-      }
+                let thisDir = fse.ensureDir(pageDir) // promise { pending }
 
-      return Promise.all(blankPages)
-    })
-    .then(() => {
+                blankPages.push(thisDir)
+            }
 
-      let pendingWrites = []; // TODO: Consider fsp.copy instead of per page I/O.
+            return Promise.all(blankPages)
+        }).then(() => {
+            let pendingWrites = [] // TODO: Consider fse.copy instead of IO per page.
 
-      for (let i = startAt, endAt = startAt + pages; i < endAt; i++) {
-        let styleFile = path.join('.', 'manuscript', `page-${i}`, `style.${cssExt}`)
-        let htmlFile = path.join('.', 'manuscript', `page-${i}`, `body.${htmlExt}`)
+            for (let i = startAt, endAt = startAt + pages; i < endAt; i++) {
+                let styleFile = path.join('.', 'manuscript', `page-${i}`, `style.${cssExt}`)
+                let htmlFile = path.join('.', 'manuscript', `page-${i}`, `body.${htmlExt}`)
 
-        let thisWrite = fsp.writeFile(styleFile, '')
-        let thatWrite = fsp.writeFile(htmlFile, bodyTemplate)
+                let thisWrite = fse.writeFile(styleFile, '')
+                let thatWrite = fse.writeFile(htmlFile, bodyTemplate)
 
-        pendingWrites.push(thisWrite)
-        pendingWrites.push(thatWrite)
-      }
+                pendingWrites.push(thisWrite)
+                pendingWrites.push(thatWrite)
+            }
 
-      return Promise.all(pendingWrites)
-    }).then(() => {
-    return process.stdout.write(`${chalk.blue(' done.')}` + '\n')
-  }).catch((err) => {
-    if (err) return console.log("Couldn't create pages", err)
-    throw err
-  })
+            return Promise.all(pendingWrites)
+        }).then(() => {
+            return process.stdout.write(`${chalk.blue(' done.')}` + '\n')
+        }).catch((err) => {
+            if (err) return console.log('Couldn\'t create pages', err)
+            throw err
+        })
 }
 
 module.exports.addPages = addPages

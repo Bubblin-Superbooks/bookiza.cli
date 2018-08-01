@@ -1,11 +1,10 @@
-+!~-(((r, undefined) => {
-
+(((r) => {
   // *************************************//
   // *********** DEPENDENCIES ************//
   // *************************************//
 
   const gulp = r('gulp')
-  const fsp = r('fs-promise')
+  const fse = r('fs-extra')
   const fs = r('fs')
   const path = r('path')
   const browserSync = r('browser-sync')
@@ -22,7 +21,7 @@
   const sass = r('gulp-sass')
   const less = r('gulp-less')
   const stylus = r('gulp-stylus')
-  const postcss = r('gulp-postcss')
+  // const postcss = r('gulp-postcss')
 
   // *************************************//
   // ************ DEFAULT TASK ***********//
@@ -72,7 +71,6 @@
   // *************************************//
 
   gulp.task('indexPage', () => {
-
     const bookLength = book.length()
 
     let contentString = ''
@@ -81,8 +79,8 @@
       contentString += `<div class='page'><iframe src='build/renders/page-${index}.html'></iframe></div>`
     }
 
-    fsp.readJson(path.join('.', '.bookrc')).then((json) => {
-      return templateData = {
+    fse.readJson(path.join('.', '.bookrc')).then((json) => {
+      return {
         CONTENT: contentString,
         BOOKNAME: json.name
       }
@@ -137,7 +135,7 @@
       scriptContent = fs.readFileSync(scriptPath, 'utf-8').toString()
     }
 
-    const pageTemplateData = { bodyContent, templateStyleContent, styleContent, headContent, templateHeadContent, scriptContent}
+    const pageTemplateData = { bodyContent, templateStyleContent, styleContent, headContent, templateHeadContent, scriptContent }
 
     gulp.src(path.join('.', 'crust', 'page-template.html'))
       .pipe(handlebars(pageTemplateData, {}))
@@ -208,13 +206,14 @@
             .pipe(gulpif(/[.]scss|sass$/, sass()))
             .pipe(gulpif(/[.]less$/, less()))
             .pipe(gulpif(/[.]styl$/, stylus()))
-
             .pipe(gulp.dest(path.join('build', 'manuscript', page)))
             .on('end', () => {
               renderPage(page)
             })
         }
       }, delay)
+
+    browserSync.reload()
     })
 
     gulp.watch(path.join('templates', '**.*'), obj => {

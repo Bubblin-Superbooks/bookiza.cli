@@ -19,7 +19,7 @@ TODO: Dual license | To be decided.
 
                             The MIT License
 
-Copyright (c) 2015-2016-2017+ Marvin Danig and The Bubblin Foundation *.
+Copyright © 3rd millenium+ Marvin Danig, Sonica Arora and The Bubblin Foundation *.
 
 See https://github.com/bubblin/bookiza/contributors
 
