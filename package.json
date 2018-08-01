@@ -1,6 +1,6 @@
 {
   "name": "bookiza",
-  "version": "0.1.2",
+  "version": "1.0.0-beta.0",
   "description": "A book baking tool",
   "logo": {
     "file": "./assets/images/bookiza.png"
