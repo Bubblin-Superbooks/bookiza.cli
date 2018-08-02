@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "arc-bookiza": "0.0.13",
-    "book-length": "1.0.4",
+    "book-length": "1.0.5",
     "chalk": "2.4.1",
     "check-types": "7.3.0",
     "co": "4.6.0",
