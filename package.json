@@ -1,6 +1,6 @@
 {
   "name": "bookiza",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "A book baking tool",
   "logo": {
     "file": "./assets/images/bookiza.png"
@@ -52,7 +52,6 @@
     "git-bookiza": "0.0.10",
     "is-positive-integer": "1.1.1",
     "jsonfile": "4.0.0",
-    "npm": "6.2.0",
     "npm-update-module": "1.0.5",
     "os-homedir": "1.0.2",
     "progress": "2.0.0",
