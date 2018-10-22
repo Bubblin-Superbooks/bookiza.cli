@@ -943,13 +943,13 @@
 	const _reifyFrames = size => [...d.createRange()
 		.createContextualFragment(new String(new Array(size)
 			.fill()
-			.map((v, i) => `<div class="page"><iframe src="./renders/${ _book.options.build }/page-${i + 1}.html"></iframe></div>`)))
+			.map((v, i) => `<div class="page"><iframe src="${ _book.options.path }/page-${i + 1}.html"></iframe></div>`)))
 		.querySelectorAll('div')
 	].map((page, index) => _addPageWrappersAndBaseClasses(page, index))
 
 	const _createFrame = (index, html) =>
 		html === undefined
-			? _addPageWrappersAndBaseClasses(d.createRange().createContextualFragment(`<div class="page"><iframe src="./renders/${ _book.options.build }/page-${index}.html"></iframe></div>`).firstChild, index)
+			? _addPageWrappersAndBaseClasses(d.createRange().createContextualFragment(`<div class="page"><iframe src="${ _book.options.path }/page-${index}.html"></iframe></div>`).firstChild, index)
 			: _addPageWrappersAndBaseClasses(html, index)
 
 
