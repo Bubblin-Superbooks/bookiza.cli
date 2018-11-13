@@ -3,7 +3,7 @@ html, body {
   margin: 0 0;
   overflow: hidden;
   color: #444;
-  font: 4.2vw/1.25 'EB Garamond', serif;
+  font: 4.4vw/1.20 'EB Garamond', serif;
   height:100vh;
   width:100vw;
 }
@@ -92,7 +92,8 @@ p.chapter-begin:first-letter {
   float: left;
   line-height: 10vw;
   font-size: 25vw;
-  color: hsla(200, 50%, 50%, 1);
+  color: hsla(11, 50%, 50%, 1);
+  font-family: 'Luckiest Guy', serif;
 }
 
 .center {
@@ -110,12 +111,13 @@ blockquote {
     margin: 2vh 0;
     padding: 0;
     quotes: "\201C""\201D""\2018""\2019";
-    color: #666;
+    color: #222;
     font-weight: 100;
+    font-style: italic;
 }
 
 blockquote:before {
-    color: #0c0;
+    color: #0cf;
     content: open-quote;
     font-size: 6vw;
     line-height: 0.1vw;
@@ -124,7 +126,7 @@ blockquote:before {
 }
 
 blockquote:after {
-    color: #0c0;
+    color: #0cf;
     content: close-quote;
     font-size: 6vw;
     line-height: 0.4vw;

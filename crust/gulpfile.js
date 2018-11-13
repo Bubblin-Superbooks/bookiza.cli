@@ -26,6 +26,7 @@
   // *************************************//
   // ************ Build BUILD ************//
   // *************************************//
+  var openAt = 1
 
   function getFolders (dir) {
     return fs.readdirSync(dir)
@@ -60,6 +61,7 @@
   gulp.task('renderBook', gulp.series('pages', 'templates', (done) => {
     const folders = getFolders(path.join('.', 'build', 'manuscript'))
     folders.map(folder => { renderPage(folder) })
+
     done()
   }))
 
@@ -85,8 +87,8 @@
     fse.readJson(path.join('.', '.bookrc')).then((json) => {
       return {
         BOOKNAME: json.name,
-        BOOKLENGTH: bookLength,
-        OPENAT: 1
+        OPENAT: openAt,
+        BOOKLENGTH: bookLength
       }
     }).then((templateData) => {
       gulp.src(path.join('.', 'crust', 'index-template.html'))
@@ -150,7 +152,7 @@
   }
 
   // Glob pattern matching
-  const glob = [path.join('manuscript', '*'),
+  var glob = [path.join('manuscript', '*'),
     path.join('manuscript', '*', '*.+(js|css|html|markdown|md|haml|less|styl|scss|sass)')
   ]
 
@@ -166,7 +168,7 @@
       logLevel: 'debug'
     })
 
-    var trashWatcher = gulp.watch(path.join('trash', '*'), gulp.series('indexPage', browserSync.reload))
+    var trashWatcher = gulp.watch(path.join('trash', '*'), gulp.series('indexPage'))
 
     trashWatcher.on('add', function (pagePath, stats) {
       const paths = pagePath.split(path.sep)
@@ -178,7 +180,22 @@
 
     gulp.watch(path.join('templates', '**.*'), gulp.series('renderBook'))
 
-    var globWatcher = gulp.watch(glob, gulp.series('renderBook', 'indexPage', browserSync.reload))
+    var globWatcher = gulp.watch(glob, gulp.series('renderBook', 'indexPage'))
+
+    globWatcher.on('change', function(pagePath, stats){
+      const paths = pagePath.split(path.sep)
+      if (paths[paths.length - 1] === '') {
+        var page = paths[paths.length - 2]
+      } else if (paths[paths.length - 1].split('-')[0] === 'page') {
+        page = paths[paths.length - 1]
+      } else {
+        page = paths[paths.length - 2]
+      }
+      if(page) {
+        openAt = page.substring(5)
+      }
+      
+    });
 
     globWatcher.on('add', function (pagePath, stats) {
       const paths = pagePath.split(path.sep)
