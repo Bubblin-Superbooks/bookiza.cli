@@ -2,7 +2,7 @@
 
 Quick and beautiful books. *Everywhere*. `Responsive` by default.
 
-Bookiza is a book *baking tool*. It is a lightweight javascript (node 6+) framework that helps you compose book apps (SPAs).
+Bookiza is a book *baking tool* for the web. It's a lightweight serverside framework based on javascript (node 8+) that lets you create and compose book (SPAs) from your local.
 
 # Advantage
 Bookiza can cut your book writing & publishing time down by half. By HALF!, no less. Integrate some of the best design and development techniques of the world into your journey of book writing.

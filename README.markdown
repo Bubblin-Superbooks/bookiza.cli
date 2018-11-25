@@ -5,7 +5,7 @@ Beautiful responsive books. On web.
 Bookiza is a book *baking tool* for web. It is a lightweight JavaScript (node LTS+) framework with a browser shim that lets you publish books, magazines or comics online.
 
 [![Travis](https://img.shields.io/travis/bookiza/bookiza.svg?maxAge=2592000)](https://travis-ci.org/bookiza/bookiza)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](https://commitizen.github.io/cz-cli/)
 [![npm](https://img.shields.io/npm/dt/bookiza.svg?maxAge=2592000)](https://www.npmjs.com/package/bookiza)
 ![alt tag](https://raw.githubusercontent.com/bookiza/bookiza/master/assets/images/bookiza.png)
 
@@ -15,29 +15,29 @@ Bookiza cuts your book writing & publishing time down by half. By HALF!, no less
 
 Get your developer & designer friends to work and collaborate with you.
 
-Produce delightful books that work [everywhere](https://bubbl.in/support)!
+Produce delightful books that work [everywhere](https://bubblin.io/support)!
 
-> Visit the [Bookiza Website](http://bookiza.io) for more details.
+> Visit the [Bookiza Website](https://bookiza.io) for more details.
 
 
 ### Support
 
-Books written using Bookiza are [supported](https://bubbl.in/support) on every major device, tablet and desktop out there. All it needs is a modern browser and an Internet connection (This will change!).
+Books written using Bookiza are [supported](https://bubblin.io/support) on every major device, tablet and desktop out there. All it needs is a modern browser and an Internet connection (This will change!).
 
-Here are some [demo books](https://bubbl.in/books) created by our community.
+Here are some [demo books](https://bubblin.io/books) created by our community.
 
 Despite ubiquity our effort with superbooks points mostly to yielding best reading experiences on tablets i.e. iPads(iOS 7+), Kindle 3 (Silk) and Android 5.0+ phablets. Because, well, even though it's great to support desktops, smartphones, TVs and whatnot, the most ideal situation and surface for reading books is the tablet.
 
 ### Documentation
 
-Full documentation is available [here](https://bookiza.github.io/docs/) and [here](https://bubbl.in/cover/official-handbook-by-marvin-danig) and [here](https://bubbl.in/cover/bookiza-framework-by-marvin-danig).
+Full documentation is available [here](https://bookiza.github.io/docs/) and [here](https://bubblin.io/cover/official-handbook-by-marvin-danig) and [here](https://bubblin.io/cover/bookiza-framework-by-marvin-danig).
 
 A quick tutorial on how to write superbooks is [here](https://marvindanig.wordpress.com/2016/03/17/how-to-write-a-superbook/).
 
 
 ### What you'll need
 
-node > 6.2.1, git-scm, bubblin's `api_key` and a unixy-style shell/terminal.
+node > 8.1.3, git-scm, bubblin's `api_key` and a unixy-style shell/terminal.
 
 ### Setup
 
@@ -78,7 +78,7 @@ $ bookiza new MY-AWESOME-BOOK --leafs 12 --template comics        # Creates a pr
 `cd` into the project and:
 
 ```bash
-$ bookiza server                  # Opens http://localhost:4567 on your browser!
+$ bookiza server                  # Opens https://localhost:4567 on your browser!
 ```
 
 Open the project on your favorite text editor (Sublime/Atom) and write away! Once you're ready (or even if you're not) hit:
@@ -102,7 +102,7 @@ That's it.
 
 Bookiza comes along with several FREE, responsive and scalable [templates](https://github.com/bookiza/templates) so that you don’t have to do the layouts yourself.
 
-Feel free to use templates to kickstart your book/magazine in a best possible way and ensure that your work is responsive and [scalable](https://bubbl.in/support) on as many devices as possible.
+Feel free to use templates to kickstart your book/magazine in a best possible way and ensure that your work is responsive and [scalable](https://bubblin.io/support) on as many devices as possible.
 
 > We’re accepting new templates for all kinds of longform. Feel free to [fork](https://github.com/bookiza/templates#fork-destination-box) and submit pull requests per following [rules](https://github.com/bookiza/templates#rules) for any kind of book that you may have worked on.
 
@@ -136,8 +136,8 @@ When you register bookiza (`$ bookiza register` or `$ b z` ) it will automatical
   },
 
   "urls": {
-    "registrationURL": "https://bubbl.in/api/register",
-    "baseURL": "https://bubbl.in/api/books/"
+    "registrationURL": "https://bubblin.io/api/register",
+    "baseURL": "https://bubblin.io/api/books/"
   }
 }
 
@@ -172,7 +172,7 @@ Books baked with Bookiza use building-blocks of web i.e. HTML, CSS and JavaScrip
 
 Get the whole web inside your book!
 
-Check out our [demo book](http://bubbl.in/cover/the-solar-system-by-marvin-danig) on your iPad, for example.
+Check out our [demo book](https://bubblin.io/cover/the-solar-system-by-marvin-danig) on your iPad, for example.
 
 
 ### Why a framework & not wordprocessor?
@@ -189,7 +189,7 @@ We also wanted books to feel native on the new web -- not like websites that pre
 
 :book: Bookiza is not yet another javascript framework (thankfully) for mobile or app development. It doesn't prescribed a pattern or emphasizes MVC or anything like that. Bookiza is also not a blogging solution. If you wish to write short-form essays or blogposts of upto 3-4 pages (or so) we recommend you to go for a blog instead.
 
-At the moment bookiza will bake manuscripts that are at least 4 pages long. Read more about Superbooks on [Bubblin](https://bubbl.in).
+At the moment bookiza will bake manuscripts that are at least 4 pages long. Read more about Superbooks on [Bubblin](https://bubblin.io).
 
 
 ### Obsession
@@ -216,23 +216,23 @@ We want to focus on a future where web and books are unified, in a single resour
 
 
 ## The library
-Books created via Bookiza can be published directly to [bubblin](https://bubbl.in) - our substrate platform for book lovers. Or you can host it on your own website!
+Books created via Bookiza can be published directly to [bubblin](https://bubblin.io) - our substrate platform for book lovers. Or you can host it on your own website!
 
-Find a selection of *exclusive* and [handpicked books](https://bubbl.in/books) by our community of writers.
+Find a selection of *exclusive* and [handpicked books](https://bubblin.io/books) by our community of writers.
 
 ## The community
 
 * Follow [@bookiza on Twitter](https://twitter.com/bookiza)
 * Have a feature request or find a bug? [Submit an issue](https://github.com/bookiza/bookiza/issues)
-* Have a question that's not a feature request or bug report? [Ask on Bookiza Bubblin forum](http://bubblin.uservoice.com/forums/228504-general)
-* Read the [Bubblin Blog](http://medium.com/)
+* Have a question that's not a feature request or bug report? [Ask on Bookiza Bubblin forum](https://bubblin.uservoice.com/forums/228504-general)
+* Read the [Bubblin Blog](https://medium.com/)
 
 
 ## Authors
 
-Created & maintained by [Marvin Danig](http://twitter.com/marvindanig).
+Created & maintained by [Marvin Danig](https://twitter.com/marvindanig).
 
-Pull requests, [issues](https://github.com/bookiza/bookiza/issues), contribution and [donations](https://bubbl.in/donations/new) are very welcome. Feedback is welcome from both developers & designers!
+Pull requests, [issues](https://github.com/bookiza/bookiza/issues), contribution and [donations](https://bubblin.io/donations/new) are very welcome. Feedback is welcome from both developers & designers!
 
 See the list of [contributors](https://github.com/bookiza/bookiza/graphs/contributors).
 
