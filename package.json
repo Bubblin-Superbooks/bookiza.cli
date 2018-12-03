@@ -1,6 +1,6 @@
 {
   "name": "bookiza",
-  "version": "1.0.0-beta.8",
+  "version": "1.0.0-beta.9",
   "description": "A book baking tool",
   "logo": {
     "file": "./assets/images/bookiza.png"
@@ -48,17 +48,17 @@
     "co-prompt": "1.0.0",
     "commander": "2.19.0",
     "dateformat": "3.0.3",
-    "fs-extra": "7.0.0",
+    "fs-extra": "7.0.1",
     "git-bookiza": "0.0.10",
     "is-positive-integer": "1.1.1",
     "jsonfile": "5.0.0",
     "npm-update-module": "1.0.5",
-    "os-homedir": "1.0.2",
+    "os-homedir": "2.0.0",
     "progress": "2.0.1",
     "pug": "2.0.3",
-    "shelljs": "0.8.2",
+    "shelljs": "0.8.3",
     "spawn-npm-install": "1.2.0",
-    "superagent": "4.0.0-beta.5"
+    "superagent": "4.0.0"
   },
   "devDependencies": {
     "chai": "4.2.0",
