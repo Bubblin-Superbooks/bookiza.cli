@@ -26,7 +26,6 @@
   // *************************************//
   // ************ Build BUILD ************//
   // *************************************//
-  var openAt = 1
 
   function getFolders (dir) {
     return fs.readdirSync(dir)
@@ -87,7 +86,6 @@
     fse.readJson(path.join('.', '.bookrc')).then((json) => {
       return {
         BOOKNAME: json.name,
-        OPENAT: openAt,
         BOOKLENGTH: bookLength
       }
     }).then((templateData) => {
@@ -190,11 +188,7 @@
         page = paths[paths.length - 1]
       } else {
         page = paths[paths.length - 2]
-      }
-      if(page) {
-        openAt = page.substring(5)
-      }
-      
+      }      
     });
 
     globWatcher.on('add', function (pagePath, stats) {

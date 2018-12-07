@@ -90,7 +90,9 @@
 
 	const _setGeometricalPremise = (node) => node.getBoundingClientRect()
 
-	const _resetGeometricalPremise = () => { _book.plotter.bounds = _setGeometricalPremise(_book.node) }
+	const _resetGeometricalPremise = () => {
+		_book.plotter.bounds = _setGeometricalPremise(_book.node)
+	}
 
 	w.addEventListener('resize', _resetGeometricalPremise) // Recalibrate geometrical premise.
 
@@ -99,7 +101,9 @@
 		y: `${parseInt(d.getElementsByTagName('body')[0].getBoundingClientRect().height) / 2}`
 	})
 
-	const _resetGeometricalOrigin = () => { _book.plotter.origin = _setGeometricalOrigin() }
+	const _resetGeometricalOrigin = () => {
+		_book.plotter.origin = _setGeometricalOrigin()
+	}
 
 	w.addEventListener('resize', _resetGeometricalOrigin) // Recalibrate geometrical origin.
 
@@ -111,13 +115,17 @@
 	* Force the book length to always be an even number: https://bubblin.io/docs/concept
 	***************************************************************************************/
 
-	const _initializeSuperBook = ({ options = { duration: 300, peel: true, zoom: true, startPage: 1, length: 4, animation: 'hard' } }) => {
-    
+	const _initializeSuperBook = ({
+		options = { duration: 300, peel: true, zoom: true, startPage: 1, length: 4, animation: 'hard' }
+	}) => {
 		_removeChildren(_book.node)
 
 		delete _book.elements /* Clear object property from { _book } after a mandatory DOM lookup. */
 
-		_book.options = options /* Save options to { book } */
+		/* TODO: Check each value and provide default before assignment of options object. Bad values can be passed within Option properties. */
+		_book.options = options
+
+		// if (_book.options.startPage === 'undefined') _book.options.startPage = _getCurrentPage(options.startPage)
 
 		let size =
 			_book.frames.length === 0
@@ -128,7 +136,9 @@
 
 		if (_book.frames.length === 0) _book.frames = _reifyFrames(size)
 
-		if (_isOdd(_book.frames.length)) { _book.frames.push(_createFrame(_book.frames.length)) } /* If pages were printed via server-side HTML. See line #44 */
+		if (_isOdd(_book.frames.length)) {
+			_book.frames.push(_createFrame(_book.frames.length))
+		} /* If pages were printed via server-side HTML. See line #44 */
 
 		/********************************************************
 		 * Set up mutationObserver & performanceObservers to 	  *
@@ -412,8 +422,8 @@
 
 	const _handleKeyUpEvent = (event) => {
 		if (event.keyCode === 32) {
-      /* We have _next() method right here */
-      _book.state.direction = _forward
+			/* We have _next() method right here */
+			_book.state.direction = _forward
 			_book.state.isTurning ? (_book.tick += 1) : (_book.tick = 1)
 			_book.eventsCache.push({ tick: _book.tick, page: _book.targetPage }) // Pop via DOM mutations
 			_printElementsToDOM(
@@ -467,7 +477,7 @@
 	 * Conio-tubular math + web animation objects *
   **********************************************/
 
-  /* 
+	/* 
     Use https://caniuse.com/#feat=css-clip-path with a polyfill 
     https://stackoverflow.com/questions/52483173/is-it-possible-to-clip-a-side-of-a-div-with-css-like-so
   */
@@ -517,7 +527,7 @@
 		bezierCurvature = 'ease-in-out',
 		direction = 'normal',
 		iterations = 1,
-		iterationStart = 0
+    iterationStart = 0
 	}) => ({
 		currentTime: 0,
 		duration: duration,
@@ -525,7 +535,7 @@
 		fill: 'both',
 		iterations: iterations,
 		direction: direction,
-		iterationStart: iterationStart
+    iterationStart: iterationStart
 	})
 
 	const _openTheBook = () => {
@@ -601,42 +611,8 @@
 				}
 				break
 			default:
-				_isEven(_getCurrentPage(_book.targetPage))
-					? (_book.state.animations.book = _book.node.animate(_slide(), _options({})).reverse())
-					: (_book.state.animations.book = _book.node.animate(_slide(), _options({})).reverse())
+        _turnTheBook(), _applyEventListenersOnBook(_isInitialized)
 
-				let animation3 = _isEven(_getCurrentPage(_book.targetPage))
-					? _book.frames[
-							_setViewIndices(_getCurrentPage(_book.targetPage), _book.state.mode)[0]
-						].childNodes[0].animate(_kf2(), _options({ delay: _book.Ω }))
-					: _book.frames[
-							_setViewIndices(_getCurrentPage(_book.targetPage), _book.state.mode)[1]
-						].childNodes[0].animate(_kf1(), _options({ delay: _book.Ω, direction: 'reverse' }))
-
-				_isEven(_getCurrentPage(_book.targetPage))
-					? [
-							_book.frames[
-								_setViewIndices(_getCurrentPage(_book.currentPage), _book.state.mode)[1]
-							].childNodes[0]
-								.animate(_kf4(), _options({}))
-								.reverse(),
-							_book.frames[
-								_setViewIndices(_getCurrentPage(_book.currentPage), _book.state.mode)[0]
-							].childNodes[0].animate(_kf3(), _options({}))
-						]
-					: [
-							_book.frames[
-								_setViewIndices(_getCurrentPage(_book.currentPage), _book.state.mode)[0]
-							].childNodes[0].animate(_kf3(), _options({})),
-							_book.frames[
-								_setViewIndices(_getCurrentPage(_book.currentPage), _book.state.mode)[1]
-							].childNodes[0].animate(_kf1(), _options({}))
-						]
-
-				animation3.onfinish = (event) => {
-					_setCurrentPage(_book.targetPage)
-					_applyEventListenersOnBook(_isInitialized)
-				}
 				break
 		}
 	}
@@ -762,6 +738,7 @@
 							_book.state.isTurning = false
 							_setCurrentPage(_book.targetPage)
 
+
 							_book.turned.page = _getCurrentPage(pageNo)
 							_book.turned.view = _setViewIndices(_getCurrentPage(pageNo), _book.state.mode).map(
 								(i) => i + 1
@@ -803,7 +780,6 @@
 				break
 		}
 	}
-
 
 	/*********************************
 	 * @Helper methods  *
@@ -866,7 +842,7 @@
 			let isNodeAdded = false
 
 			mutations.map((mutation) => {
-        if (mutation.type === 'childList' && mutation.addedNodes.length) isNodeAdded = true
+				if (mutation.type === 'childList' && mutation.addedNodes.length) isNodeAdded = true
 			})
 			if (isNodeAdded) _book.state.isInitialized === true ? _turnTheBook() : _openTheBook()
 		}
@@ -891,25 +867,24 @@
 		if (!w.performance) return
 
 		const PO = new PerformanceObserver((list) => {
-      const Ω = list.getEntries().find(({ name }) => name === 'first-contentful-paint')
-  
-      // console.log(list.getEntries())
-      // console.log('Ω', Ω)
+			const Ω = list.getEntries().find(({ name }) => name === 'first-contentful-paint')
 
-      for (const entry of list.getEntries()) {
-        console.log(entry.name, entry.startTime, entry.duration)
+			// console.log(list.getEntries())
+			// console.log('Ω', Ω)
+
+			for (const entry of list.getEntries()) {
+				// console.log(entry.name, entry.startTime, entry.duration)
 			}
 		})
 
 		// Start observing the entry types you care about.
-    PO.observe({ entryTypes: ['resource', 'paint'] })
-    
-  }
-  
-  const _oneTimePrint = () => {
+		PO.observe({ entryTypes: [ 'resource', 'paint' ] })
+	}
+
+	const _oneTimePrint = () => {
 		switch (_getCurrentPage(_book.options.startPage)) {
 			case 1:
-				_book.currentPage = _getCurrentPage(_book.options.startPage + 1) // 2
+				_book.currentPage = _getCurrentPage(parseInt(_book.options.startPage) + 1) // 2
 				_book.targetPage = _getCurrentPage(_book.options.startPage) // 1
 
 				_book.state.direction = _backward
@@ -934,7 +909,7 @@
 
 				break
 			case _book.frames.length:
-				_book.currentPage = _getCurrentPage(_book.options.startPage - 1) // last but one
+				_book.currentPage = _getCurrentPage(parseInt(_book.options.startPage) - 1) // last but one
 				_book.targetPage = _getCurrentPage(_book.options.startPage) // last
 				_book.state.direction = _forward
 
@@ -958,15 +933,20 @@
 
 				break
 			default:
-				// _book.currentPage = _isEven(_getCurrentPage(_book.options.startPage)) ? 1 : _book.frames.length
-
-				_book.targetPage = _getCurrentPage(_book.options.startPage)
-
-				_book.state.direction = _isEven(_getCurrentPage(_book.options.startPage)) ? _backward : _forward
+				_book.state.direction = _isEven(_getCurrentPage(_book.options.startPage)) ? _forward : _backward
+				_book.state.isTurning ? (_book.tick += 1) : (_book.tick = 1)
 
 				_book.currentPage = _isEven(_getCurrentPage(_book.options.startPage))
 					? _getCurrentPage(parseInt(_book.options.startPage) - 1)
 					: _getCurrentPage(parseInt(_book.options.startPage) + 1)
+
+				_setCurrentPage(
+					_isEven(_getCurrentPage(_book.options.startPage))
+						? _getCurrentPage(parseInt(_book.options.startPage) - 1)
+						: _getCurrentPage(parseInt(_book.options.startPage) + 1)
+				)
+        
+				_book.targetPage = _target(_book.state.direction)
 
 				_printElementsToDOM(
 					'view',
@@ -974,11 +954,9 @@
 						(index) => _book.frames[`${index}`]
 					),
 					_book.tick
-				)
-
-				_book.state.isTurning ? (_book.tick += 1) : (_book.tick = 1)
-
-				_isEven(_getCurrentPage(_book.options.startPage))
+        )
+        
+				_book.state.direction === _forward
 					? _printElementsToDOM(
 							'rightPages',
 							_getRangeIndices(_getCurrentPage(_book.currentPage), _book.state.mode).rightPageIndices.map(
@@ -994,10 +972,11 @@
 							_book.tick
 						)
 
+				_book.eventsCache.push({ tick: _book.tick, page: _book.currentPage }) // Pop via DOM mutations
+
 				break
 		}
 	}
-
 
 	const _stepper = (mode) => (mode === 'portrait' ? 1 : 2)
 
@@ -1013,6 +992,17 @@
 
 	const _setCurrentPage = (pageNo) => {
 		_book.targetPage = _book.currentPage = _getCurrentPage(pageNo)
+		_saveLastPageAndHistory(_book.targetPage)
+	}
+
+	const _saveLastPageAndHistory = (lastPage) => {
+		if (typeof Storage === 'undefined') return
+
+		w.localStorage.setItem('lastPage', lastPage)
+		w.history.replaceState(null, null, `${w.location.pathname}#${lastPage}`)
+
+		// console.log(lastPage, _book.currentPage, _getCurrentPage(_book.targetPage))
+		// w.localStorage.clear()
 	}
 
 	const _getCurrentPage = (pageNo) =>
@@ -1109,35 +1099,42 @@
 
 	// const _removeElementsFromDOMByClassName = (className) => { node.getElementsByClassName(className).remove() }
 
-	const _removeElementFromDOMById = (id) => { if (d.getElementById(id) !== null) d.getElementById(id).remove() }
+	const _removeElementFromDOMById = (id) => {
+		if (d.getElementById(id) !== null) d.getElementById(id).remove()
+	}
 
 	const _reifyFrames = (size) =>
-		[ ...d.createRange()
-				  .createContextualFragment(
-					  new String(
-						  new Array(size).fill().map((v, i) =>
-                  `<div class="page">
+		[
+			...d
+				.createRange()
+				.createContextualFragment(
+					new String(
+						new Array(size).fill().map(
+							(v, i) =>
+								`<div class="page">
                     <iframe src="./build/renders/page-${i + 1}.html"></iframe>
                   </div>`
-              )
-            )
-				  ).querySelectorAll('div')
+						)
+					)
+				)
+				.querySelectorAll('div')
 		].map((page, index) => _addPageWrappersAndBaseClasses(page, index))
 
 	const _createFrame = (index, html) =>
 		html === undefined
 			? _addPageWrappersAndBaseClasses(
-          d.createRange()
-						.createContextualFragment(
-              `<div class="page">
+					d.createRange().createContextualFragment(
+						`<div class="page">
                   <iframe src="./build/renders/page-${index}.html"></iframe>
               </div>`
-						).firstChild,
+					).firstChild,
 					index
 				)
 			: _addPageWrappersAndBaseClasses(html, index)
 
-	const _buttons = () => { _printElementsToDOM('buttons', _book.buttons) }
+	const _buttons = () => {
+		_printElementsToDOM('buttons', _book.buttons)
+	}
 
 	const _printElementsToDOM = (type, elements, tick = _book.frames.length) => {
 		const docfrag = d.createDocumentFragment()
@@ -1392,7 +1389,6 @@
 
 	_viewer.onChange('(orientation: landscape)', (match) => {
 		_book.state.mode = match ? 'landscape' : 'portrait'
-		console.log('switch gears baby!')
 	})
 
 	let _book = new Book()
