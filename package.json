@@ -32,8 +32,7 @@
   "READme": "https://github.com/bookiza/bookiza#readme",
   "author": "Marvin Danig <marvin@bubblin.io> (https://marvindanig.com)",
   "scripts": {
-    "postinstall": "node ./scripts/displayLicense.js",
-    "test": "mocha ./tests/start.tests.js -w"
+    "postinstall": "node ./scripts/displayLicense.js"
   },
   "bin": {
     "bookiza": "./bin/bin.js",
