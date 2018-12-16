@@ -4,7 +4,7 @@ Beautiful responsive books. On web.
 
 Bookiza is a book *baking tool* for web. It is a lightweight JavaScript (node LTS+) framework with a browser shim that lets you publish books, magazines or comics online.
 
-[![Travis](https://img.shields.io/travis/bookiza/bookiza.svg?maxAge=2592000)](https://travis-ci.org/bookiza/bookiza)
+<!-- [![Travis](https://img.shields.io/travis/bookiza/bookiza.svg?maxAge=2592000)](https://travis-ci.org/bookiza/bookiza) -->
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](https://commitizen.github.io/cz-cli/)
 [![npm](https://img.shields.io/npm/dt/bookiza.svg?maxAge=2592000)](https://www.npmjs.com/package/bookiza)
 ![alt tag](https://raw.githubusercontent.com/bookiza/bookiza/master/assets/images/bookiza.png)
@@ -30,7 +30,7 @@ Despite ubiquity our effort with superbooks points mostly to yielding best readi
 
 ### Documentation
 
-Full documentation is available [here](https://bookiza.github.io/docs/) and [here](https://bubblin.io/cover/official-handbook-by-marvin-danig) and [here](https://bubblin.io/cover/bookiza-framework-by-marvin-danig).
+Full documentation is available [here](https://bubblin.io/bookiza/docs/) and [here](https://bubblin.io/cover/official-handbook-by-marvin-danig) and [here](https://bubblin.io/cover/bookiza-framework-by-marvin-danig).
 
 A quick tutorial on how to write superbooks is [here](https://marvindanig.wordpress.com/2016/03/17/how-to-write-a-superbook/).
 
