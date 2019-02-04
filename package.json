@@ -42,9 +42,9 @@
     "arc-bookiza": "0.0.13",
     "book-length": "1.0.5",
     "center-align": "1.0.1",
-    "chalk": "2.4.1",
+    "chalk": "2.4.2",
     "chalkline": "0.0.5",
-    "check-types": "7.4.0",
+    "check-types": "8.0.1",
     "co": "4.6.0",
     "co-prompt": "1.0.0",
     "commander": "2.19.0",
@@ -59,8 +59,8 @@
     "pug": "2.0.3",
     "shelljs": "0.8.3",
     "spawn-npm-install": "1.2.0",
-    "superagent": "4.0.0",
-    "terminal-link": "1.1.0"
+    "superagent": "4.1.0",
+    "terminal-link": "1.2.0"
   },
   "devDependencies": {
     "chai": "4.2.0",
