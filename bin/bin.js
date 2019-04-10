@@ -144,7 +144,24 @@ program
     console.log()
   })
 
-// Start server
+// Render pages w/o starting the server.
+program
+  .command('render')
+  .alias('x')
+  .description('Build manuscript')
+  .action(options => {
+    const manuscript = require(path.join('..', 'lib', 'render.js'))
+    manuscript.render()
+  }).on('--help', () => {
+    console.log('  Examples:')
+    console.log()
+    console.log('    $ bookiza render')
+    console.log('    $ b x')
+    console.log()
+  })
+
+
+// Render pages and start local server
 program
   .command('server')
   .alias('s')
@@ -223,7 +240,7 @@ program
     console.log()
   })
 
-// Update bookiza
+// Registered as?
 program
   .command('whoami')
   .alias('w')
