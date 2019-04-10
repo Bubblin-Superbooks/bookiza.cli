@@ -14,7 +14,7 @@
   cl.blue()
   cl.red()
 
-  fse.readFile('./MIT-license.txt', 'utf8', (err, data) => {
+  fse.readFile('./license.txt', 'utf8', (err, data) => {
     if (err) {
       return Error('Couldn\'t read license information.')
     }
