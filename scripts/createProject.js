@@ -77,9 +77,9 @@ function setUp (projectname, leafs, templateName) {
           if (err) { return console.error(chalk.red('Failed. Gulpfile unavailable.', err)) }
         })
     }).then(() => {
-      const osHomedir = require('os-homedir')
+      const osHomeDir = require('os').homedir()
       const arc = require('arc-bookiza')
-      const location = path.join(osHomedir(), '.', '.bookizarc')
+      const location = path.join(osHomeDir, '.', '.bookizarc')
 
       let packageJson = null
       let promises = []
