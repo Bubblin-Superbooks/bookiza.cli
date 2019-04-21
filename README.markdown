@@ -11,20 +11,20 @@ Bookiza is a book *baking tool* for web. It is a lightweight JavaScript (node LT
 
 
 # Advantage
-Bookiza cuts your book writing & publishing time down by half. By HALF!, no less. Bringing in some of the best design and development techniques in the world, bookiza will turn your saga into a timeless product, an eternal journey of … no wait, an offline-first, well-paginated simple book app.
+Bookiza cuts your book writing & publishing time down by half. By _half_, no less! Porting some of the best design and development techniques from the world of rapid app development, Bookiza will let you develop your story (novel, comics, magazine or textbook) into a timeless product, an eternal journey for readers to share an enjoy… no wait, an 'offline-first' + 'iPad-first' codex book app called [Superbook](https://bubblin.io/docs/format).
 
-Get your developer & designer friends to work and collaborate with you.
+Now you can get your developer & designer friends to collaborate on your book for a proper layout and [referential accessibility](https://bubblin.io/blog/referential-accessibility).
 
-Produce delightful books that work [everywhere](https://bubblin.io/support)!
+Produce delightful books that work [everywhere](https://bubblin.io/support) and for everyone!
 
 > Visit the [Bookiza Website](https://bookiza.io) for more details.
 
 
 ### Support
 
-Books written using Bookiza are [supported](https://bubblin.io/support) on every major device, tablet and desktop out there. All it needs is a modern browser and an Internet connection (This will change!).
+Books written using Bookiza are [supported](https://bubblin.io/support) on every major device, tablet and desktop out there. All it needs is a modern browser and an Internet connection to load the first time.
 
-Here are some [demo books](https://bubblin.io/books) created by our community.
+Here are some [demo books](https://bubblin.io/) with varying implementations of layout, line-tracking and responsive effects.
 
 Despite ubiquity our effort with superbooks points mostly to yielding best reading experiences on tablets i.e. iPads(iOS 7+), Kindle 3 (Silk) and Android 5.0+ phablets. Because, well, even though it's great to support desktops, smartphones, TVs and whatnot, the most ideal situation and surface for reading books is the tablet.
 
@@ -32,12 +32,12 @@ Despite ubiquity our effort with superbooks points mostly to yielding best readi
 
 Full documentation is available [here](https://bubblin.io/bookiza/docs/) and [here](https://bubblin.io/cover/official-handbook-by-marvin-danig) and [here](https://bubblin.io/cover/bookiza-framework-by-marvin-danig).
 
-A quick tutorial on how to write superbooks is [here](https://marvindanig.wordpress.com/2016/03/17/how-to-write-a-superbook/).
+A quick tutorial on how to write superbooks is [here](https://bubblin.io/docs/tutorial).
 
 
 ### What you'll need
 
-node > 8.1.3, git-scm, bubblin's `api_key` and a unixy-style shell/terminal.
+node > 8.1.3, git-scm, an `api_key` from `https://bubblin.io` and a unixy-style shell environment.
 
 ### Setup
 
@@ -216,7 +216,7 @@ We want to focus on a future where web and books are unified, in a single resour
 
 
 ## The library
-Books created via Bookiza can be published directly to [bubblin](https://bubblin.io) - our substrate platform for book lovers. Or you can host it on your own website!
+Books created via Bookiza can be published directly to [bubblin](https://bubblin.io) - our substrate marketplace for books or you can host the book on your own website too!
 
 Find a selection of *exclusive* and [handpicked books](https://bubblin.io/books) by our community of writers.
 
