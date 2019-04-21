@@ -75,7 +75,7 @@ $ bookiza whoami or $ b w
 To bootstrap new project, run:
 
 ```bash
-$ bookiza new MY-AWESOME-BOOK --leafs 12 --template comics        # Creates a project with 12 fresh leafs (24 pages) inside `manuscript/` and applies a `comics` template.
+$ bookiza new my-awesome-new-book --leafs 40 --template novella        # Creates a project with 40 fresh leafs (80 pages) inside the `manuscript/` folder and applies a responsive `novella` template on it.
 ```
 
 `cd` into the project and:
@@ -84,13 +84,13 @@ $ bookiza new MY-AWESOME-BOOK --leafs 12 --template comics        # Creates a pr
 $ bookiza server                  # Opens https://localhost:4567 on your browser!
 ```
 
-Open the project on your favorite text editor (Sublime/Atom) and write away! Once you're ready (or even if you're not) hit:
+Open the project on your favorite text editor (VSC Sublime Atom or any other) and write away! Once you're ready (or even if you're not) hit:
 
 ```bash
 $ bookiza publish
 ```
 
-Your book will be *POST'ed / PATCH'ed* over Bubblin instantly, in real time. Keep updating!
+Your book will be *POST'ed / PATCH'ed* over Bubblin instantly, in real time. Keep updating with reader feedback!
 
 
 To see full CLI documentation with:
