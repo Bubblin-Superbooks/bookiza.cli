@@ -32,7 +32,7 @@ Despite ubiquity our effort with superbooks points mostly to yielding best readi
 
 Full documentation is available [here](https://bubblin.io/bookiza/docs/) and [here](https://bubblin.io/cover/official-handbook-by-marvin-danig) and [here](https://bubblin.io/cover/bookiza-framework-by-marvin-danig).
 
-A quick tutorial on how to write superbooks is [here](https://bubblin.io/docs/tutorial).
+A quick primer on how Superbooks work is [here](https://bubblin.io/docs/concept).
 
 
 ### What you'll need
@@ -53,7 +53,10 @@ Check installation with:
 $ bookiza --version
 ```
 
-Register client with:
+> `bookiza` is shortened to alphabet `b` on your terminal as CLI invoker. This is useful when you're creating a relatively longer body of text and it becomes increasingly painful to type full form commands into the abyss.
+
+
+Next, register Bookiza client with:
 
 ```bash
 $ bookiza register or $ b z
