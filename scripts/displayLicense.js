@@ -8,29 +8,25 @@
   const center = require('center-align')
 
 
-  const link = terminalLink('https://bubblin.io/bookiza/docs/registration', 'https://bubblin.io/bookiza/docs/registration');
+  const docLink = terminalLink('https://bubblin.io/bookiza/docs/registration', 'https://bubblin.io/bookiza/docs/registration');
+
+  const supportLink = terminalLink('https://github.com/bookiza/bookiza.cli/issues', 'https://github.com/bookiza/bookiza.cli/issues');
  
   cl.green()
   cl.blue()
   cl.red()
 
   fse.readFile('./license.txt', 'utf8', (err, data) => {
-    if (err) {
-      return Error('Couldn\'t read license information.')
-    }
-  
-  console.log(center(chalk.keyword('orange')(data)))
-  
-  cl.white()
+    if (err) return Error('Couldn\'t read license information.')
+    console.log(center(chalk.keyword('orange')(data)))
+    cl.white()
+    console.log('\n Hurray!, installation is complete!')
+    console.log(`\n Welcome to Bookiza Abelone—the book baking tool for web.`)
+    console.log(` Next step is to register your Bookiza Client. Use ${chalk.bold.redBright('$ bookiza register')} to pass your Bubblin credentials.`)
+    console.log(` Visit: ${chalk.blue(docLink)} for more information.`)
+    console.log(` Support at ${chalk.blue(supportLink)}\n`)
+    cl.white()
 
-  console.log(chalk.whiteBright.bgBlack(`Welcome to creating responsive Superbooks with ${chalk.magentaBright.bgBlack('Bookiza Abelone')}!`))
-  console.log(chalk.whiteBright.bgBlack(`NEXT STEP: Register Bookiza with: ${chalk.bold.redBright.bgBlack('$ bookiza register')} command using your Bubblin credentials.`))
-  console.log(chalk.whiteBright.bgBlack(`Visit: ${chalk.blueBright.bgBlack(link)} to learn more.`))
-  
-  cl.green()
-  cl.blue()
-  cl.red()
-
-
+    console.log('\n\n\n')
   })
 })(require)

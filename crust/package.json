@@ -1,6 +1,6 @@
 {
   "name": " <projectName> ",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Superbook <projectName> by <username>",
   "keywords": [
     "superbook",
@@ -20,10 +20,10 @@
     "babel-preset-env": "1.7.0",
     "book-length": "1.0.5",
     "browser-sync": "2.26.3",
-    "chalk": "2.4.1",
-    "del": "3.0.0",
+    "chalk": "2.4.2",
+    "del": "4.1.0",
     "delayed": "1.0.1",
-    "fs-extra": "7.0.0",
+    "fs-extra": "7.0.1",
     "gulp": "4.0.0",
     "gulp-babel": "8.0.0",
     "gulp-compile-handlebars": "0.6.1",
@@ -31,12 +31,12 @@
     "gulp-haml": "1.0.1",
     "gulp-if": "2.0.2",
     "gulp-less": "4.0.1",
-    "gulp-markdown": "3.0.0",
+    "gulp-markdown": "4.0.0",
     "gulp-postcss": "8.0.0",
     "gulp-sass": "4.0.2",
     "gulp-stylus": "2.7.0",
     "js-cookie": "2.2.0",
     "path": "0.12.7",
-    "shelljs": "0.8.2"
+    "shelljs": "0.8.3"
   }
 }
