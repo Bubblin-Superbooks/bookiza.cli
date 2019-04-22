@@ -207,22 +207,8 @@ program
     console.log()
   })
 
-program
-  .command('update')
-  .alias('u')
-  .description('Update Bookiza CLI')
-  .action(() => {
-    const packageUpdater = require(path.join('npm-update-module'))
-    packageUpdater.update('bookiza')
-  }).on('--help', () => {
-    console.log('  Examples:')
-    console.log()
-    console.log('    $ bookiza update')
-    console.log('    $ b u')
-    console.log()
-  })
 
-// Update bookiza
+// Register Bookiza client with Bubblin
 program
   .command('register')
   .alias('z')

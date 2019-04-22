@@ -1,6 +1,6 @@
 {
   "name": "bookiza",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "The book reification tool for web",
   "logo": {
     "file": "./assets/images/bookiza.png"
@@ -53,7 +53,6 @@
     "git-bookiza": "0.0.10",
     "is-positive-integer": "1.1.1",
     "jsonfile": "5.0.0",
-    "npm-update-module": "1.0.6",
     "progress": "2.0.3",
     "pug": "2.0.3",
     "shelljs": "0.8.3",
