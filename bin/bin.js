@@ -210,7 +210,7 @@ program
 program
   .command('update')
   .alias('u')
-  .description('Update bookiza')
+  .description('Update Bookiza CLI')
   .action(() => {
     const packageUpdater = require(path.join('npm-update-module'))
     packageUpdater.update('bookiza')
