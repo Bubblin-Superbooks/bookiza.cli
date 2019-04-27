@@ -18,9 +18,9 @@ program
   }).on('--help', () => {
     console.log('  Examples:')
     console.log()
-    console.log('    $ bookiza new Sun-And-Sand -l 6')
-    console.log('    $ bookiza new Live-Action-Hero -l 5')
-    console.log(chalk.bold.bgGreen('    $ b n Wuthering-Heights -l 100'))
+    console.log('    $ bookiza new sun-and-sand -l 6')
+    console.log('    $ b new my-live-book --leafs 15')
+    console.log(chalk.bold.bgGreen('    $ b n wuthering-heights -l 100 -t novel'))
     console.log()
   })
 

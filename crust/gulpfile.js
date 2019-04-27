@@ -15,7 +15,7 @@
   const del = r('del')
   const delayed = r('delayed')
 
-  // Preprocessors / Transpilers
+  // Preprocessors / Transpilers 
   const haml = r('gulp-haml')
   const markdown = r('gulp-markdown')
   const sass = r('gulp-sass')
@@ -64,9 +64,9 @@
     done()
   }))
 
-  // *************************************//
-  // ************ Book Indexer ***********//
-  // *************************************//
+  //*************************************//
+  //************ Book Indexer ***********//
+  //*************************************//
 
   gulp.task('indexPage', (done) => {
     indexPageHandler()
