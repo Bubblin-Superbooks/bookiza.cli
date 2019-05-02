@@ -1,6 +1,6 @@
 {
   "name": "bookiza",
-  "version": "1.1.9",
+  "version": "1.2.9",
   "description": "The book reification tool for web",
   "logo": {
     "file": "./assets/images/bookiza.png"
@@ -50,14 +50,14 @@
     "commander": "2.20.0",
     "dateformat": "3.0.3",
     "fs-extra": "7.0.1",
-    "git-bookiza": "0.0.10",
+    "git-bookiza": "1.0.0",
     "is-positive-integer": "1.1.1",
     "jsonfile": "5.0.0",
     "progress": "2.0.3",
     "pug": "2.0.3",
     "shelljs": "0.8.3",
     "spawn-npm-install": "1.2.0",
-    "superagent": "5.0.2",
+    "superagent": "5.0.5",
     "terminal-link": "1.3.0"
   },
   "devDependencies": {
