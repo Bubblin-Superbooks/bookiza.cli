@@ -1,9 +1,6 @@
 # License(s)
 
-THIS REPO IS CURRENTLY UNLICENSED.
-
-TODO: Dual license | To be decided.
-
+> See https://bubblin.io/bookiza/docs/license for licensing options.
 
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
@@ -17,7 +14,7 @@ TODO: Dual license | To be decided.
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
 
-                            The MIT License
+                            Dormant`MIT License`
 
 Copyright © 3rd millenium+ Marvin Danig, Sonica Arora and The Bubblin Foundation *.
 

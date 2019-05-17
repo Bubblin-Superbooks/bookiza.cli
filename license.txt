@@ -9,9 +9,9 @@
 ----------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------
 
-DORMANT`MIT License`
+> See https://bubblin.io/bookiza/docs/license for licensing options.
 
-TODO: ACTUAL TERMS OF LICENSING TBD.
+DORMANT`MIT License`
 
 Copyright © 3rd millenium+ Marvin Danig, Sonica Arora and Bubblin Superbooks.
 
