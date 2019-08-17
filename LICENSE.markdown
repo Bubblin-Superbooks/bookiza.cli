@@ -1,6 +1,6 @@
 # License(s)
 
-> See https://bubblin.io/bookiza/docs/license for licensing options.
+> See https://bubblin.io/bookiza/docs/license for early licensing options.
 
 -----------------------------------------------------------------------------
 -----------------------------------------------------------------------------
@@ -16,7 +16,7 @@
 
                             Dormant`MIT License`
 
-Copyright © 3rd millenium+ Marvin Danig, Sonica Arora and The Bubblin Foundation *.
+Copyright © 3rd millenium+ Marvin Danig, Sonica Arora and Bubblin Superbooks Inc.
 
 See https://github.com/bubblin/bookiza/contributors
 

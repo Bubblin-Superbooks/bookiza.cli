@@ -19,7 +19,7 @@
     if (err) return Error('Couldn\'t read license information.')
     console.log(center(chalk.keyword('orange')(data)))
     cl.white()
-    console.log('\n Installation was successful. Yay!')
+    console.log('\n Installation complete. Yay!')
     // console.log(`\n Welcome to Bookiza Abelone.`)
     console.log(`\n Next step: Run ${chalk.bold.yellow('$ bookiza register')} and pass your Bubblin credentials. \n`)
     console.log(` Visit: ${chalk.blue(docLink)} for more information.`)
