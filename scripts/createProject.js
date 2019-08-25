@@ -36,16 +36,16 @@ function setUp (projectname, leafs, templateName) {
 
   fse.outputFile(path.join('.', '.gitignore'), 'node_modules\nbuild\n*/*.DS_Store')
     .then(() => {
-      console.log(chalk.yellow(`.gitignoring /build /node_modules… :${chalk.blue('done.')}`))
+      console.log(chalk.yellow(`Gitignoring… /build /node_modules :${chalk.blue('done.')}`))
     }).catch((err) => {
       if (err) { return console.error(chalk.red('.gitignore not initialized.'), err) }
     })
 
-  fse.outputFile(path.join('.', 'license.txt'), '')
+  fse.outputFile(path.join('.', 'license.md'), '')
     .then(() => {
-      console.log(chalk.yellow(`License.txt… :${chalk.blue('added.')}`))
+      console.log(chalk.yellow(`License (blank) initialization:${chalk.blue('complete.')}`))
     }).catch((err) => {
-      if (err) { return console.error(chalk.red('License not initialized.'), err) }
+      if (err) { return console.error(chalk.red('Licensing not initialized.'), err) }
     })
 
   let promises = []
@@ -100,7 +100,7 @@ function setUp (projectname, leafs, templateName) {
 
           fse.outputFile(path.join('.', 'package.json'), JSON.stringify(packageJson, null, 2))
             .then(() => {
-              console.log(chalk.yellow(`PackageJson configured… :${chalk.blue('standing by for installation.')}`))
+              console.log(chalk.yellow(`PackageJson configured… :${chalk.blue('preparing for installation.')}`))
             }).catch((err) => {
               if (err) return Error('Couldn\'t write package.json', err)
             })
@@ -119,7 +119,7 @@ function setUp (projectname, leafs, templateName) {
         }).then(bookrc => {
           fse.outputFile(path.join('.', '.bookrc'), JSON.stringify(bookrc, null, 2))
             .then(() => {
-              console.log(chalk.yellow(`Setting bookrc values… :${chalk.blue('done.')}`))
+              console.log(chalk.yellow(`Default bookrc values… :${chalk.blue('done.')}`))
             })
             .catch(err => {
               if (err) return new Error('Couldn\'t write .bookrc', err)
@@ -140,11 +140,7 @@ function setUp (projectname, leafs, templateName) {
                 if (err) {
                   return console.error(chalk.red(`Could\n't install modules:\n${err.message}`))
                 } else {
-                  console.log(chalk.yellow(`Installed npm modules… :${chalk.blue('successfully.')}`))
-                  const git = require('git-bookiza')
-                  git.init()
-
-                  // process.exit(1)
+                  console.log(chalk.yellow(`Installing npm modules… :${chalk.blue('successful.')}`))
                 }
               })
             }).catch((err) => {

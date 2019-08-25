@@ -1,13 +1,13 @@
 {
   "name": " <projectName> ",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "Superbook <projectName> by <username>",
   "keywords": [
     "superbook",
     "bookiza"
   ],
   "author": " <username> <your@email.com> <(https://bubblin.io/<username>)>",
-  "license": "ISC",
+  "license": "BOL",
   "homepage": "https://bubblin.io/<username>",
   "repository": {
     "type": "git",
@@ -18,12 +18,12 @@
   },
   "dependencies": {
     "babel-preset-env": "1.7.0",
-    "book-length": "1.0.5",
-    "browser-sync": "2.26.5",
+    "book-length": "1.2.0",
+    "browser-sync": "2.26.7",
     "chalk": "2.4.2",
-    "del": "4.1.1",
-    "delayed": "1.0.1",
-    "fs-extra": "8.0.1",
+    "del": "5.0.0",
+    "delayed": "2.0.0",
+    "fs-extra": "8.1.0",
     "gulp": "4.0.2",
     "gulp-babel": "8.0.0",
     "gulp-compile-handlebars": "0.6.1",
@@ -31,7 +31,7 @@
     "gulp-haml": "1.0.1",
     "gulp-if": "2.0.2",
     "gulp-less": "4.0.1",
-    "gulp-markdown": "4.0.0",
+    "gulp-markdown": "5.0.0",
     "gulp-postcss": "8.0.0",
     "gulp-sass": "4.0.2",
     "gulp-stylus": "2.7.0",

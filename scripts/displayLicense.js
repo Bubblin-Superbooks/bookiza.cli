@@ -1,4 +1,4 @@
-(function (r) {
+((r) => {
   'use strong'
 
   const fse = r('fs-extra')
@@ -15,15 +15,15 @@
   cl.blue()
   cl.red()
 
-  fse.readFile('./license.txt', 'utf8', (err, data) => {
+  fse.readFile('./license.md', 'utf8', (err, data) => {
     if (err) return Error('Couldn\'t read license information.')
-    console.log(center(chalk.keyword('orange')(data)))
+    console.log(chalk.keyword('orange')(data))
     cl.white()
     console.log('\n Installation complete. Yay!')
     // console.log(`\n Welcome to Bookiza Abelone.`)
     console.log(`\n Next step: Run ${chalk.bold.yellow('$ bookiza register')} and pass your Bubblin credentials. \n`)
-    console.log(` Visit: ${chalk.blue(docLink)} for more information.`)
-    console.log(` Support: ${chalk.blue(supportLink)}\n`)
+    console.log(` Visit: ${chalk.keyword('orange')(docLink)} for more information.`)
+    console.log(` Support: ${chalk.keyword('orange')(supportLink)}\n`)
     cl.white()
 
     console.log('\n\n\n')

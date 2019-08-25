@@ -1,6 +1,6 @@
 {
   "name": "bookiza",
-  "version": "1.5.12",
+  "version": "1.6.13",
   "description": "The book reification tool for the web",
   "logo": {
     "file": "./assets/images/bookiza.png"
@@ -44,13 +44,12 @@
     "center-align": "1.0.1",
     "chalk": "2.4.2",
     "chalkline": "0.0.5",
-    "check-types": "9.0.1",
+    "check-types": "10.0.0",
     "co": "4.6.0",
     "co-prompt": "1.0.0",
     "commander": "3.0.0",
     "dateformat": "3.0.3",
     "fs-extra": "8.1.0",
-    "git-bookiza": "1.0.0",
     "is-positive-integer": "1.1.1",
     "jsonfile": "5.0.0",
     "progress": "2.0.3",

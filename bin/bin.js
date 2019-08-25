@@ -10,7 +10,7 @@ program
   .alias('n')
   .description('New book (Setup manuscript)')
   .option('-l, --leafs <number_of_leafs>', 'tentative number of leafs')
-  .option('-t, --template <template>', 'Use: [comics, magazine, novel, text, super]') // TODO: 1. fetch() templates. 2. Implement super template with first five pages 
+  .option('-t, --template <template>', 'Use: [comics, magazine, novel, text, super]') // TODO: 1. fetch() templates. 2. Implement super template with first five pages
   .action((projectname, options) => {
     const project = require(path.join('..', 'lib', 'new.js'))
 
