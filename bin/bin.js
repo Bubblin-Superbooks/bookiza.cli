@@ -179,34 +179,6 @@ program
     console.log()
   })
 
-// Book status
-program
-  .command('status')
-  .description('Check status')
-  .action(() => {
-    const git = require('git-bookiza')
-    git.status()
-  }).on('--help', () => {
-    console.log('  Examples:')
-    console.log()
-    console.log('    $ git status')
-    console.log()
-  })
-
-// Push changes to repo
-program
-  .command('push')
-  .description('Push changes')
-  .action(() => {
-    const git = require('git-bookiza')
-    git.push()
-  }).on('--help', () => {
-    console.log('  Examples:')
-    console.log()
-    console.log('    $ git push origin master')
-    console.log()
-  })
-
 
 // Register Bookiza client with Bubblin
 program
