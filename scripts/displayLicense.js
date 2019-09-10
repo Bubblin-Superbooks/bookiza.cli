@@ -15,7 +15,7 @@
   cl.blue()
   cl.red()
 
-  fse.readFile('./license.md', 'utf8', (err, data) => {
+  fse.readFile('./LICENSE.markdown', 'utf8', (err, data) => {
     if (err) return Error('Couldn\'t read license information.')
     console.log(chalk.keyword('orange')(data))
     cl.white()
