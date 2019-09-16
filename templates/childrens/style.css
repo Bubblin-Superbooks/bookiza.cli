@@ -1,0 +1,30 @@
+/* The CSS below is applied on all pages of the comics.  */
+/* Simply set the path to background image on each page.CSS like so:
+
+	Open `./manuscript/page-1/style.css` and paste just one line of code:
+
+	body{
+		background-image: url(path/to/your/book/assets/images/page-1-(1115x1143-pixels)-image-file.jpg);
+	}
+
+	to render the background-image specific to page number 1. And so on.
+
+*/
+
+body, html {
+    height: 100vh;
+    width: 100vw;
+    margin: 0 0;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-color: #f00;
+    background-size: 100% 100%;
+}
+
+img {
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+
+
+

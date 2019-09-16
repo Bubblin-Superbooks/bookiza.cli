@@ -111,9 +111,18 @@ function setUp (projectname, leafs, templateName) {
 
           bookrc.type = templateName
 
-          bookrc.has_page_numbers = false;
+					bookrc.has_page_numbers = false
 
-          [bookrc.mode = { 'HTML': 'html', 'CSS': 'css', 'JS': 'js', 'HEAD': 'html' }] = [bookizArc.mode]
+					bookrc.cover =	{ 'punchline': '', 'toc': '', 'author_detail': '', 'colophon': '', 'synopsis': '' }
+
+					bookrc.status = 'draft'
+
+					bookrc.asset_url = '' // rawgit or cloudinary path
+
+					bookrc.book_url =  '';
+
+					[ bookrc.mode = { 'HTML': 'html', 'CSS': 'css', 'JS': 'js', 'HEAD': 'html' }] = [ bookizArc.mode ]
+
 
           return bookrc
         }).then(bookrc => {
