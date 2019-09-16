@@ -20,15 +20,16 @@ body {
 h1,
 h2,
 h3,
-h4 {
-  margin: 2vw 0;
-  padding: 0;
-  padding: 0;
-  color: #444;
+h4,
+h5 {
   width: 100%;
   text-align: center;
-  font-weight: 100;
-  line-height: 1.25;  
+  line-height: calc(2 * 4vw * 1.50);
+}
+
+h5,
+h6 {
+  line-height: calc(1 * 4vw * 1.50);
 }
 
 h1,
@@ -38,11 +39,42 @@ h4,
 h5,
 h6 {
   font-family: 'Berkshire Swash', cursive;
+  margin: 0 0;
+  padding: 0;
+  color: #000;
+  font-weight: 100;
+}
+
+h1 {
+  font-size: 8vw;
+}
+
+h2 {
+  font-size: 6vw;
+}
+
+h3 {
+  font-size: 5vw;
+}
+
+h4 {
+  font-size: 4vw;
+}
+
+h5 {
+  font-size: 4vw;
+}
+
+h6 {
+  font-size: 4vw;
 }
 
 img {
   border: 0;
   -ms-interpolation-mode: bicubic;
+  display:block;
+  margin: calc(1/2 * 4vw * 1.50) auto;
+
 }
 
 a {
@@ -69,32 +101,33 @@ p {
 
 p.start-chapter {
   text-indent: 0;
-  margin: 0 0 0 0;  
+  margin: calc(5 * 4vw * 1.50 - 2px) auto 0;
 }
 
 p.start-chapter:first-letter {
   display: inline-block;
   margin: 0 1vw 0 0;
   float: left;
-  font-size: calc( 3 * 4vw ); /* three times normal size */
+  font-size: calc(3 * 4vw); /* three times normal size */
   line-height: calc(2 * 4vw * 1.50 * 0.95);
-  font-family: 'Berkshire Swash', cursive;  
-  /* background: yellow; */     /* Test what looks good on your book */
+  font-family: 'Berkshire Swash', cursive;
 }
 
 
 blockquote {
   text-align: center;
-  font-size: 90%;
   font-style: italic;
   position: relative;
   quotes: "\201C""\201D""\2018""\2019";
-  width: 90%;
-  margin: calc( 4 * (150vh *(1115/1443))/100 * 7/5) auto;
+  margin: calc( 1/2 * (150vh *(1115/1443))/100 * 7/5) auto;
+  margin: calc( 1/2 * 4vw * 1.50) 0;
+  margin: 0 0;
+  display: inline-block;
+  width: 100%;
 }
 
-blockquote p {
-  margin: calc( 4 * (150vh *(1115/1443))/100 * 7/5) auto !important;
+blockquote p, blockquote em {
+  margin: 0 auto !important;
 }
 
 pre,
@@ -104,16 +137,19 @@ code {
   white-space: -pre-wrap;
   white-space: -o-pre-wrap;
   word-wrap: break-word;
-  margin: 0 auto calc( 4 * (150vh *(1115/1443))/100 * 7/5);
-  font-size: 90%;
+  margin: 0;
+  padding: 0;
   text-align: center;
-}
-
-h3 {
-  font-family: 'Berkshire Swash', cursive;
-  line-height: 1.2em;
-  color: black;
-  font-size: 200%;
+  font-family: 'EB Garamond', serif;
+  font-style: normal;
+  font-synthesis: none;
+  font-stretch: ultra-condensed;
+  font-variant: no-common-ligatures proportional-nums slashed-zero;
+  font-size: 4vw;
+  line-height: calc(4vw * 1.50);
+  font-kerning: normal;
+  text-rendering: geometricPrecision;
+  /*background: pink;*/
 }
 
 ol {
@@ -170,7 +206,7 @@ hr.section::after {
 }
 
 hr.section::before {
-  content: "❉";
+  content: "❦";
   color: black;
 }
 
@@ -187,7 +223,7 @@ hr.chapter::after {
 }
 
 hr.chapter::before {
-  content: "❧";
+  content: "❦";
   color: black;
 }
 
@@ -222,9 +258,11 @@ hr::before {
 .inner {
   margin: calc((100vh - (17 * (4vw * 1.5) + 4vw))/2) auto;
   width: 85vw;
+  height: calc(17 * (4vw * 1.5) + 4vw);
   max-height: calc(17 * (4vw * 1.5) + 4vw);
   break-after: right;
-  /*background: aliceblue; */ /* enable to see the maximum staging area */
+  display:inline-block;
+  /* background: aliceblue; */  /* enable to see the maximum staging area */
 }
 
 .flex {
@@ -241,22 +279,22 @@ hr::before {
 
 /* Helper classes */
 
-.no-indent {
+p.no-indent {
   text-indent: 0;
   /* Continue line on a new page with break on the previous page. */
 }
 
-.stretch-last-line {
+p.stretch-last-line {
   text-align-last: justify;
   /* Not supported on Safari */
 }
 
-.squeeze-para {
+p.squeeze-para {
   letter-spacing: -0.5px;
   /* Handle orphans and widows manually */
 }
 
-.stretch-para {
+p.stretch-para {
   letter-spacing: 0.5px;
   /* Handle orphans and widows manually */
 }
@@ -271,7 +309,7 @@ hr::before {
 
 .center {
   text-align: center;
-  margin: 0 auto;
+  margin: inherit auto;
 }
 
 .small {
