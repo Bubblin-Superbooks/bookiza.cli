@@ -17,9 +17,9 @@
 
   fse.readFile('./LICENSE.markdown', 'utf8', (err, data) => {
     if (err) return Error('Couldn\'t read license information.')
-    console.log(chalk.keyword('orange')(data))
+    console.log(chalk.keyword('magenta')(data))
     cl.white()
-    console.log('\n Installation complete. Yay!')
+    console.log('\n Installation is complete. Yay! 🍾')
     // console.log(`\n Welcome to Bookiza Abelone.`)
     console.log(`\n Next step: Run ${chalk.bold.yellow('$ bookiza register')} and pass your Bubblin credentials. \n`)
     console.log(` Visit: ${chalk.keyword('orange')(docLink)} for more information.`)
