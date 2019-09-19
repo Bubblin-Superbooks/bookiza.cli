@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<meta property="bkz-version" content="1.0.1">
   {{{ templateHeadContent }}}
-
   {{{ headContent }}}
   <style>
     {{{ templateStyleContent }}}
@@ -12,6 +12,7 @@
 </head>
 <body>
   {{{ bodyContent }}}
-  <script>{{{ scriptContent }}}</script>
+	<script> ((document, undefined) => { {{{ scriptContent }}} })(document)</script>
+	<script> ((document, undefined) => { {{{ templateScriptContent }}} })(document)</script>
 </body>
 </html>

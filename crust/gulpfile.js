@@ -15,7 +15,7 @@
   const del = r('del')
   const delayed = r('delayed')
 
-  // Preprocessors / Transpilers 
+  // Preprocessors / Transpilers
   const haml = r('gulp-haml')
   const markdown = r('gulp-markdown')
   const sass = r('gulp-sass')
@@ -64,9 +64,9 @@
     done()
   }))
 
-  //*************************************//
-  //************ Book Indexer ***********//
-  //*************************************//
+  // *************************************//
+  // ************ Book Indexer ***********//
+  // *************************************//
 
   gulp.task('indexPage', (done) => {
     indexPageHandler()
@@ -109,16 +109,18 @@
     const scriptPath = path.join('.', 'build', 'manuscript', page, 'script.js')
     const stylePath = path.join('.', 'build', 'manuscript', page, 'style.css')
     const templateStylePath = path.join('.', 'build', 'templates', 'style.css')
-    const templateHeadPath = path.join('.', 'build', 'templates', 'head.html')
+		const templateHeadPath = path.join('.', 'build', 'templates', 'head.html')
+		const templateScriptPath = path.join('.', 'build', 'templates', 'script.js')
 
     let bodyContent = ''
     let styleContent = ''
-    let templateStyleContent = ''
     let scriptContent = ''
     let headContent = ''
     let templateHeadContent = ''
+		let templateScriptContent = ''
+    let templateStyleContent = ''
 
-    // TODO: Use promises here?
+		// TODO: Use promises here?
 
     if (fs.existsSync(bodyPath)) {
       bodyContent = fs.readFileSync(bodyPath, 'utf-8').toString()
@@ -138,9 +140,14 @@
     }
     if (fs.existsSync(scriptPath)) {
       scriptContent = fs.readFileSync(scriptPath, 'utf-8').toString()
+		}
+
+    if (fs.existsSync(templateScriptPath)) {
+      templateScriptContent = fs.readFileSync(templateScriptPath, 'utf-8').toString()
     }
 
-    const pageTemplateData = { bodyContent, templateStyleContent, styleContent, headContent, templateHeadContent, scriptContent }
+
+    const pageTemplateData = { bodyContent, templateStyleContent, styleContent, headContent, templateHeadContent, scriptContent, templateScriptContent }
 
     gulp.src(path.join('.', 'crust', 'page-template.html'))
       .pipe(handlebars(pageTemplateData, {}))
@@ -188,7 +195,7 @@
         page = paths[paths.length - 1]
       } else {
         page = paths[paths.length - 2]
-      }      
+      }
     });
 
     globWatcher.on('add', function (pagePath, stats) {
