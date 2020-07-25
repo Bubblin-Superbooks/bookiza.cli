@@ -1,9 +1,14 @@
 #! /usr/bin/env node
 
-const program = require('commander')
 const chalk = require('chalk')
 const fs = require('fs')
 const path = require('path')
+const book = require('book-length')
+
+const { Command } = require('commander')
+
+
+const program = new Command()
 
 program
   .command('new <projectname>')
@@ -114,8 +119,7 @@ program
   .description('Book length')
   .action(() => {
     try {
-      const book = require('book-length')
-      console.log(book.length())
+      console.log(chalk.greenBright(`Book length: ${chalk.magentaBright(book.length())}`))
     } catch (ex) {
       console.error(ex.stack)
     }
@@ -227,8 +231,7 @@ program
 const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json')).toString())
 
 program
-  .version(packageJson.version)
-  .option('-v, --version', 'output the version number')
+  .version(packageJson.version, '-v, --VERSION', 'New version @bookiza')
   .parse(process.argv)
 
 if (!program.args.length) {
