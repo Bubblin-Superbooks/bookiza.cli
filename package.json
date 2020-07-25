@@ -1,6 +1,6 @@
 {
   "name": "bookiza",
-  "version": "2.10.18",
+  "version": "3.0.0.rc1",
   "description": "The book reification framework for the web",
   "logo": {
     "file": "./assets/images/bookiza.png"
@@ -40,27 +40,27 @@
   },
   "dependencies": {
     "arc-bookiza": "0.0.13",
-    "book-length": "1.2.0",
+    "book-length": "1.2.1",
     "center-align": "1.0.1",
-    "chalk": "2.4.2",
+    "chalk": "4.1.0",
     "chalkline": "0.0.5",
-    "check-types": "10.0.0",
+    "check-types": "11.1.2",
     "co": "4.6.0",
     "co-prompt": "1.0.0",
-    "commander": "3.0.1",
+    "commander": "6.0.0",
     "dateformat": "3.0.3",
-    "fs-extra": "8.1.0",
+    "fs-extra": "9.0.1",
     "is-positive-integer": "1.1.1",
-    "jsonfile": "5.0.0",
+    "jsonfile": "6.0.1",
     "progress": "2.0.3",
-    "pug": "2.0.4",
-    "shelljs": "0.8.3",
+    "pug": "3.0.0",
+    "shelljs": "0.8.4",
     "spawn-npm-install": "1.2.0",
-    "superagent": "5.1.0",
-    "terminal-link": "2.0.0"
+    "superagent": "5.3.1",
+    "terminal-link": "2.1.1"
   },
   "devDependencies": {
     "chai": "4.2.0",
-    "mocha": "6.2.2"
+    "mocha": "8.0.1"
   }
 }
