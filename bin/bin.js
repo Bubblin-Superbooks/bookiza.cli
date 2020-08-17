@@ -7,7 +7,6 @@ const book = require('book-length')
 
 const { Command } = require('commander')
 
-
 const program = new Command()
 
 program

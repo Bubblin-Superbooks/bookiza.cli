@@ -1,6 +1,6 @@
 {
   "name": "bookiza",
-  "version": "3.0.0.rc1",
+  "version": "3.0.1",
   "description": "The book reification framework for the web",
   "logo": {
     "file": "./assets/images/bookiza.png"
@@ -56,11 +56,11 @@
     "pug": "3.0.0",
     "shelljs": "0.8.4",
     "spawn-npm-install": "1.2.0",
-    "superagent": "5.3.1",
+    "superagent": "6.0.0",
     "terminal-link": "2.1.1"
   },
   "devDependencies": {
     "chai": "4.2.0",
-    "mocha": "8.0.1"
+    "mocha": "8.1.1"
   }
 }
