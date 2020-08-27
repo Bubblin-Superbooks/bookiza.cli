@@ -1,6 +1,6 @@
 {
   "name": "bookiza",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "The book reification framework for the web",
   "logo": {
     "file": "./assets/images/bookiza.png"
