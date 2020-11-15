@@ -230,7 +230,7 @@ program
 const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json')).toString())
 
 program
-  .version(packageJson.version, '-v, --VERSION', 'New version @bookiza')
+  .version(packageJson.version, '-v, --version', 'New version @bookiza')
   .parse(process.argv)
 
 if (!program.args.length) {
