@@ -22,7 +22,7 @@
     cl.white()
     console.log('\n Installation is complete. Yay! 🍾')
     // console.log(`\n Welcome to Bookiza Abelone.`)
-    console.log(`\n Next step: Run ${chalk.bold.yellow('$ bookiza register')} and pass your Bubblin credentials. \n`)
+    console.log(`\n Next step: Run ${chalk.bold.yellow('$ bookiza register')} and to connect with Bubblin. \n`)
     console.log(` Visit: ${chalk.keyword('orange')(docLink)} for more information.`)
     console.log(` Support: ${chalk.keyword('orange')(supportLink)}\n`)
     cl.white()
