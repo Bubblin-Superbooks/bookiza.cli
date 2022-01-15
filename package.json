@@ -54,7 +54,7 @@
     "jsonfile": "6.1.0",
     "progress": "2.0.3",
     "pug": "3.0.0",
-    "shelljs": "0.8.4",
+    "shelljs": "0.8.5",
     "spawn-npm-install": "1.2.0",
     "superagent": "6.1.0",
     "terminal-link": "2.1.1"
