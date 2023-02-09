@@ -40,7 +40,7 @@
     "b": "bin/bin.js"
   },
   "dependencies": {
-    "arc-bookiza": "0.0.13",
+    "arc-bookiza": "https://github.com/bookiza/arc-bookiza.git",
     "book-length": "1.2.1",
     "center-align": "1.0.1",
     "chalk": "5.2.0",

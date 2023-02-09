@@ -1,10 +1,25 @@
-function createProject (projectname, leafs, templateName) {
-  const fse = require('fs-extra')
-  const chalk = require('chalk')
+import read from 'arc-bookiza'
+import fse from 'fs-extra'
+import chalk from 'chalk'
+import path from 'path'
+import shell from 'shelljs'
+import { fileURLToPath } from 'url'
+import makeDir from '../helpers/makeDir.js'
+import addPages from '../generators/addPages.js'
+import install from 'spawn-npm-install'
+import os from 'os'
 
+/* Get to the root directory of the user */
+const homeDir = os.homedir()
+const location = import(`${homeDir}/.bookizarc`)
+
+/* __dirname isn't available inside ES modules: */
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+export default function sproutLeavesAndLayout (projectname, leafs, templateName) {
   fse.ensureDir(projectname)
     .then(() => {
-      const shell = require('shelljs')
       shell.cd(projectname) // Duration of function. See shelljs documentation.
     }).then(() => {
       setUp(projectname, leafs, templateName)
@@ -14,15 +29,10 @@ function createProject (projectname, leafs, templateName) {
 }
 
 function setUp (projectname, leafs, templateName) {
-  const fse = require('fs-extra')
-  const path = require('path')
-  const chalk = require('chalk')
-
   fse.ensureDir('assets')
     .then(() => {
-      const make = require(path.join('..', 'helpers', 'makeDir.js'))
-      make.directories(['css', 'javascript', 'images'], 'assets')
-      make.directories(['trash', 'cover', 'build'])
+      makeDir(['css', 'javascript', 'images'], 'assets')
+      makeDir(['trash', 'cover', 'build'])
     }).catch(err => {
       if (err) { return console.log(chalk.bold.red('Failed to create subdirectories…', err)) }
     })
@@ -48,14 +58,14 @@ function setUp (projectname, leafs, templateName) {
       if (err) { return console.error(chalk.red('Licensing not initialized.'), err) }
     })
 
-  let promises = []
+  const promises = []
 
   promises.push(
     fse.copy(path.join(__dirname, '..', 'templates', templateName), path.join('.', 'templates'))
       .then(() => {
         return console.log(chalk.yellow(`Applying a ${chalk.magenta(`${templateName}`)} layout… :${chalk.blue('success.')}`))
       }).catch(err => {
-        if (err) { return console.error(chalk.red('Could\'nt copy templates folder', err)) }
+        if (err) { return console.error(chalk.red('Could not copy the templates folder', err)) }
       })
   )
 
@@ -64,7 +74,7 @@ function setUp (projectname, leafs, templateName) {
       .then(() => {
         console.log(chalk.yellow(`Mobilizing crust… :${chalk.blue('success.')}`))
       }).catch((err) => {
-        if (err) { return console.error(chalk.red('Copying crust failed', err)) }
+        if (err) { return console.error(chalk.red('Copying over the crust folder failed', err)) }
       })
   )
 
@@ -77,22 +87,17 @@ function setUp (projectname, leafs, templateName) {
           if (err) { return console.error(chalk.red('Failed. Gulpfile unavailable.', err)) }
         })
     }).then(() => {
-      const osHomeDir = require('os').homedir()
-      const arc = require('arc-bookiza')
-      const location = path.join(osHomeDir, '.', '.bookizarc')
-
       let packageJson = null
-      let promises = []
+      const promises = []
 
+      // TODO: FAILS AT THIS POINT.
       promises.push(arc.read(location))
-
       promises.push(fse.readJson(path.join('.', 'crust', 'package.json')))
 
       return Promise.all(promises)
         .then((values) => {
-          let bookizArc = JSON.parse(values[0])
+          const bookizArc = JSON.parse(values[0])
           packageJson = values[1]
-
           packageJson.name = projectname
           packageJson.author = `${bookizArc.username} <${bookizArc.email}> (https://bubblin.io/${bookizArc.username})`
           packageJson.homepage = `https://bubblin.io/${bookizArc.username}`
@@ -105,24 +110,16 @@ function setUp (projectname, leafs, templateName) {
               if (err) return Error('Couldn\'t write package.json', err)
             })
 
-          let bookrc = {}
+          const bookrc = {}
 
           bookrc.name = projectname
-
           bookrc.type = templateName
-
-					bookrc.has_page_numbers = false
-
-					bookrc.cover =	{ 'punchline': '', 'toc': '', 'author_detail': '', 'colophon': '', 'synopsis': '' }
-
-					bookrc.status = 'draft'
-
-					bookrc.asset_url = '' // rawgit or cloudinary path
-
-					bookrc.book_url =  '';
-
-					[ bookrc.mode = { 'HTML': 'html', 'CSS': 'css', 'JS': 'js', 'HEAD': 'html' }] = [ bookizArc.mode ]
-
+          bookrc.has_page_numbers = false
+          bookrc.cover = { punchline: '', toc: '', author_detail: '', colophon: '', synopsis: '' }
+          bookrc.status = 'draft'
+          bookrc.asset_url = '' // rawgit or cloudinary path
+          bookrc.book_url = '';
+          [bookrc.mode = { HTML: 'html', CSS: 'css', JS: 'js', HEAD: 'html' }] = [bookizArc.mode]
 
           return bookrc
         }).then(bookrc => {
@@ -137,13 +134,10 @@ function setUp (projectname, leafs, templateName) {
         }).then(mode => {
           fse.ensureDir('manuscript')
             .then(() => {
-              const pulp = require(path.join('..', 'generators', 'addPages.js'))
-              let startAt = 1
-              let pages = leafs * 2
+              const startAt = 1
+              const pages = leafs * 2
 
-              pulp.addPages({ startAt, pages, mode })
-
-              const install = require('spawn-npm-install')
+              addPages({ startAt, pages, mode })
 
               install(Object.keys(packageJson.dependencies), { stdio: 'inherit' }, function (err) {
                 if (err) {
@@ -162,5 +156,3 @@ function setUp (projectname, leafs, templateName) {
       if (err) { return console.log(chalk.red('Moving crust or template failed:', err)) }
     })
 }
-
-module.exports.create = createProject

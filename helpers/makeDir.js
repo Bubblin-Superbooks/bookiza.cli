@@ -1,19 +1,15 @@
-function makeDir(dirsArray, parentDir, callback) {
-    const path = require('path');
-    const fs = require('fs');
-    const chalk = require('chalk');
+import path from 'path'
+import { mkdirSync } from 'node:fs'
 
-    dirsArray.forEach(dirName => {
-        if (parentDir === undefined) {
-            fs.mkdirSync(dirName);
-        } else {
-            fs.mkdirSync(path.join(parentDir, dirName));
-        }
-    });
-
-    if (typeof callback === "function") {
-        callback();
+export default function makeDir (dirsArray, parentDir, callback) {
+  dirsArray.forEach(dirName => {
+    if (parentDir === undefined) {
+      mkdirSync(dirName)
+    } else {
+      mkdirSync(path.join(parentDir, dirName))
     }
+  })
+  if (typeof callback === 'function') {
+    callback()
+  }
 }
-
-module.exports.directories = makeDir;
