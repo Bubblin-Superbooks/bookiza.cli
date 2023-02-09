@@ -90,7 +90,7 @@ function setUp (projectname, leafs, templateName) {
       let packageJson = null
       const promises = []
 
-      // TODO: FAILS AT THIS POINT.
+      // TODO: FAILS AT THIS POINT. We can use or drop arc-bookiza dependency from the tool.
       promises.push(arc.read(location))
       promises.push(fse.readJson(path.join('.', 'crust', 'package.json')))
 
