@@ -2,12 +2,9 @@ import path from 'path';
 import fse from 'fs-extra';
 import chalk from 'chalk';
 
-export default function addPages({ startAt, pages, mode }) {
+export default function addPages(startAt, pages, mode) {
   const htmlExt = mode.HTML || 'html';
   const cssExt = mode.CSS || 'css';
-
-  // let headExt = mode.HEAD || 'html'
-  // let javascriptExt = mode.JS || 'js'
 
   let bodyTemplate = '';
 
