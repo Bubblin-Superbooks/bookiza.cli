@@ -1,13 +1,13 @@
 {
   "name": "bookiza",
-  "version": "3.0.2",
+  "version": "4.0.0",
   "description": "The book reification framework for the web",
   "logo": {
     "file": "./assets/images/bookiza.png"
   },
   "preferGlobal": true,
   "engines": {
-    "node": ">=8.11.3"
+    "node": ">=18.3.0"
   },
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
     "b": "bin/bin.js"
   },
   "dependencies": {
-    "arc-bookiza": "https://github.com/bookiza/arc-bookiza.git",
+    "arc-bookiza": "^2.0.0",
     "book-length": "1.2.1",
     "center-align": "1.0.1",
     "chalk": "5.2.0",

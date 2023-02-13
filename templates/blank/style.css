@@ -3,9 +3,41 @@
 See how a working CSS template at https://github.com/bookiza/templates
 
 */
+:root {
+    --height: 100vmax;
+    --height: 100dvmax;
+    --width: 100vmin;
+    --vmin: calc(var(--width) * 1 / 100); /* Matches the value of 1vmin in the context of an iframed page. */
+    --vmax: calc(var(--height) * 1 / 100);
+}
 
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+/* FACT: div.parchment element is equal to the html, body { } elements of an iframed page. */
+html,
 body {
-    background: rgba(200, 235, 255, 0.99);
-    margin: 0 0;
-    overflow: hidden;
+    background: white;
+    font-size: calc(4 * var(--vmin));
+    line-height: calc(4 * var(--vmin) * 1.5);
+    font-style: normal;
+    font-synthesis: none;
+    font-stretch: ultra-condensed;
+    font-variant: no-common-ligatures proportional-nums slashed-zero;
+    font-kerning: normal;
+    text-rendering: geometricPrecision;
+
+    font-family: "EB Garamond", serif; 
 }

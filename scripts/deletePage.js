@@ -1,13 +1,17 @@
-function deletePage (removeAt, callback) {
+import path from 'path'
+import fse from 'fs-extra'
+import dateFormat from 'dateformat'
+
+export default function deletePage (removeAt, callback) {
   'use strong'
 
-  const fse = require('fs-extra')
-  const dateFormat = require('dateformat')
   const now = new Date()
   const timestamp = dateFormat(now, 'dddd-mmmm-dS-yyyy-hh-MM-ss-TT')
-  const path = require('path')
 
-  fse.move(path.join('__dirname', '..', 'manuscript', `page-${removeAt}`), path.join('__dirname', '..', 'trash', `page-${removeAt}-${timestamp}`))
+  fse.move(
+    path.join('__dirname', '..', 'manuscript', `page-${removeAt}`), 
+    path.join('__dirname', '..', 'trash', `page-${removeAt}-${timestamp}`)
+    )
     .then(() => {
       if (typeof callback === 'function') {
         callback()
@@ -16,5 +20,3 @@ function deletePage (removeAt, callback) {
       if (err) { return console.log('Something went wrong', err) }
     })
 }
-
-module.exports.deletePage = deletePage

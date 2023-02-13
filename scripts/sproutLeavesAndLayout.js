@@ -11,7 +11,7 @@ import os from 'os'
 
 /* Get to the root directory of the user */
 const homeDir = os.homedir()
-const location = import(`${homeDir}/.bookizarc`)
+const location = `${homeDir}/.bookizarc`
 
 /* __dirname isn't available inside ES modules: */
 const __filename = fileURLToPath(import.meta.url)
@@ -90,8 +90,7 @@ function setUp (projectname, leafs, templateName) {
       let packageJson = null
       const promises = []
 
-      // TODO: FAILS AT THIS POINT. We can use or drop arc-bookiza dependency from the tool.
-      promises.push(arc.read(location))
+      promises.push(read(location)) // Read ArcBookiza values. See line #14 above.
       promises.push(fse.readJson(path.join('.', 'crust', 'package.json')))
 
       return Promise.all(promises)
@@ -137,7 +136,7 @@ function setUp (projectname, leafs, templateName) {
               const startAt = 1
               const pages = leafs * 2
 
-              addPages({ startAt, pages, mode })
+              addPages(startAt, pages, mode)
 
               install(Object.keys(packageJson.dependencies), { stdio: 'inherit' }, function (err) {
                 if (err) {
