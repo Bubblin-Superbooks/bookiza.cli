@@ -59,9 +59,5 @@
     "spawn-npm-install": "1.2.0",
     "superagent": "8.0.9",
     "terminal-link": "3.0.0"
-  },
-  "devDependencies": {
-    "chai": "4.3.7",
-    "mocha": "10.2.0"
   }
 }

@@ -3,9 +3,15 @@
         "markdown",
         "latex",
         "plaintext",
-        "javascript"
+        "javascript",
+        "Log"
     ],
     "spellright.language": [
         "en"
-    ]
+    ],
+    "spellright.parserByClass": {
+        "Log": {
+            "parser": "markdown"
+        }
+    }
 }
