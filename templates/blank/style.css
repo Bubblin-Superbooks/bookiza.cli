@@ -39,5 +39,39 @@ body {
     font-kerning: normal;
     text-rendering: geometricPrecision;
 
-    font-family: "EB Garamond", serif; 
+    font-family: "EB Garamond", serif;
 }
+/* Put your template css below and above accessibility classes. */
+
+/* Accessibility specific media queries go below. */
+/* 1. Dark mode (or light) depending on requirement. */
+@media screen and (prefers-color-scheme: dark) {
+    body {
+        background-color: #343434;
+        color: #fff;
+    }
+}
+
+/* 2. Override animations for users with motion sickness or other vestibular disorders. */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* 3. Acquired notched space and make sure iOS Safari uses only the available vertical height (100vh). */
+@supports (padding: max(0px)) {
+    body,
+    header,
+    footer {
+        padding-left: min(0vmin, env(safe-area-inset-left));
+        padding-right: min(0vmin, env(safe-area-inset-right));
+    }
+    body {
+        min-height: -webkit-fill-available;
+    }
+}
+/* Balanced blank template ENDS HERE: */

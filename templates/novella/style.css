@@ -2,11 +2,13 @@
   --height: 100vmax;
   --height: 100dvmax;
   --width: 100vmin;
-  --vmin: calc(var(--width) * 1/100); /* Matches the value of 1vmin in the context of an iframed page. */
-  --vmax: calc(var(--height) * 1/100);
+  --vmin: calc(var(--width) * 1 / 100); /* Matches the value of 1vmin in the context of an iframed page. */
+  --vmax: calc(var(--height) * 1 / 100);
 }
 
-*, *:after, *:before   {
+*,
+*:after,
+*:before {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -20,18 +22,19 @@
 }
 
 /* FACT: div.parchment element is equal to the html, body { } elements of an iframed page. */
-html, body {
+html,
+body {
   background: white;
   font-size: calc(4 * var(--vmin));
-  line-height: calc(4 * var(--vmin) * 1.50);
+  line-height: calc(4 * var(--vmin) * 1.5);
   font-style: normal;
   font-synthesis: none;
   font-stretch: ultra-condensed;
   font-variant: no-common-ligatures proportional-nums slashed-zero;
   font-kerning: normal;
   text-rendering: geometricPrecision;
- 
-  font-family: 'EB Garamond', serif; /* TODO: Feature => Apply Garamond font-family iff the template being used is NOVEL*/
+
+  font-family: "EB Garamond", serif; /* TODO: Feature => Apply Garamond font-family iff the template being used is NOVEL*/
 }
 /* Balanced Novella Template STARTS here: */
 .leaf {
@@ -51,37 +54,42 @@ p {
 }
 p.start-chapter {
   text-indent: 0;
-  margin: calc(5 * 4 * var(--vmin) * 1.50 - 2px) auto 0;
+  margin: calc(5 * 4 * var(--vmin) * 1.5 - 2px) auto 0;
 }
 p.start-chapter::first-letter {
- /* initial-letter: 2;
+  /* initial-letter: 2;
   */
   margin: 0 calc(var(--vmin)) 0 0;
   float: left;
   font-size: calc(2 * 4 * var(--vmin) * 3 / 2);
-  line-height: calc(2 * 4 * var(--vmin) * 1.50 * 0.95);
-  font-family: 'Berkshire Swash', cursive;
+  line-height: calc(2 * 4 * var(--vmin) * 1.5 * 0.95);
+  font-family: "Berkshire Swash", cursive;
 }
 /* Manual Typesetting Helper Classes */
 p.no-indent {
   text-indent: 0;
- /* Continue line printing on a new page with a break on the previous page, but no indent. */
+  /* Continue line printing on a new page with a break on the previous page, but no indent. */
 }
 p.stretch-last-line {
   text-align-last: justify;
- /* Not yet supported on Safari */
+  /* Not yet supported on Safari */
 }
 p.squeeze-para {
-  letter-spacing: calc(-1/100 * var(--vmin));
- /* Handle orphans and widows manually */
+  letter-spacing: calc(-1 / 100 * var(--vmin));
+  /* Handle orphans and widows manually */
 }
 p.stretch-para {
-  letter-spacing: calc(1/100 * var(--vmin));
- /* Handle orphans and widows manually */
+  letter-spacing: calc(1 / 100 * var(--vmin));
+  /* Handle orphans and widows manually */
 }
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Berkshire Swash', cursive;
- /* TODO: Feature => Apply Berkshire Swash font-family iff the template being used is NOVEL */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Berkshire Swash", cursive;
+  /* TODO: Feature => Apply Berkshire Swash font-family iff the template being used is NOVEL */
   margin: 0 0;
   padding: 0;
   font-weight: 100;
@@ -90,36 +98,36 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   width: 100%;
   text-align: center;
-  line-height: calc(2 * 4 * var(--vmin) * 1.50);
+  line-height: calc(2 * 4 * var(--vmin) * 1.5);
   font-size: calc(8 * var(--vmin));
 }
 h2 {
   width: 100%;
   text-align: center;
-  line-height: calc(2 * 4 * var(--vmin) * 1.50);
+  line-height: calc(2 * 4 * var(--vmin) * 1.5);
   font-size: calc(6 * var(--vmin));
 }
 h3 {
   width: 100%;
   text-align: center;
-  line-height: calc(2 * 4 * var(--vmin) * 1.50);
+  line-height: calc(2 * 4 * var(--vmin) * 1.5);
   font-size: calc(5 * var(--vmin));
 }
 h4 {
   width: 100%;
   text-align: center;
-  line-height: calc(2 * 4 * var(--vmin) * 1.50);
+  line-height: calc(2 * 4 * var(--vmin) * 1.5);
   font-weight: 100;
   font-size: calc(4 * var(--vmin));
 }
 h5 {
   width: 100%;
   text-align: center;
-  line-height: calc(1 * 4 * var(--vmin) * 1.50);
+  line-height: calc(1 * 4 * var(--vmin) * 1.5);
   font-size: calc(4 * var(--vmin));
 }
 h6 {
-  line-height: calc(1 * 4 * var(--vmin) * 1.50);
+  line-height: calc(1 * 4 * var(--vmin) * 1.5);
   font-size: calc(4 * var(--vmin));
 }
 a {
@@ -127,7 +135,9 @@ a {
   outline: 0 none;
   text-decoration: none;
 }
-a:focus, a:active, a:hover {
+a:focus,
+a:active,
+a:hover {
   outline: 0 none;
   color: #0b56ab;
 }
@@ -135,7 +145,7 @@ img {
   border: 0;
   -ms-interpolation-mode: bicubic !important;
   display: block !important;
-  margin: calc(1/2 * 4 * var(--vmin) * 1.50) auto;
+  margin: calc(1 / 2 * 4 * var(--vmin) * 1.5) auto;
 }
 .justify {
   text-align: justify;
@@ -172,23 +182,25 @@ blockquote {
   text-align: center;
   font-style: italic;
   position: relative;
-  quotes: "\201C" "\201D" "\2018" "\2019";
-  margin: calc(1/2 * (150 * var(--vmax) *(1115/1443))/100 * 7/5) auto;
-  margin: calc(1/2 * 4 * var(--vmin) * 1.50) 0;
+  quotes: "\201C""\201D""\2018""\2019";
+  margin: calc(1 / 2 * (150 * var(--vmax) * (1115 / 1443)) / 100 * 7 / 5) auto;
+  margin: calc(1 / 2 * 4 * var(--vmin) * 1.5) 0;
   margin: 0 0;
   display: inline-block;
   width: 100%;
 }
-blockquote > p, blockquote > em {
+blockquote > p,
+blockquote > em {
   margin: 0 auto !important;
 }
-pre, code {
+pre,
+code {
   white-space: pre-wrap;
   word-wrap: break-word;
   margin: 0;
   padding: 0;
   text-align: center;
-  font-family: 'EB Garamond', serif;
+  font-family: "EB Garamond", serif;
   font-style: normal;
   font-synthesis: none;
   font-stretch: ultra-condensed;
@@ -201,8 +213,8 @@ pre, code {
 hr.section {
   border: 0;
   text-align: center;
-  height: calc(4 * var(--vmin) * 1.50);
-  margin: calc((4 * var(--vmin) * 1.50)/2) 0;
+  height: calc(4 * var(--vmin) * 1.5);
+  margin: calc((4 * var(--vmin) * 1.5) / 2) 0;
 }
 hr.section::after {
   content: "";
@@ -214,8 +226,8 @@ hr.section::before {
 hr.balanced {
   border: 0;
   text-align: center;
-  height: calc(4 * var(--vmin) * 1.50);
-  margin: calc((4 * var(--vmin) * 1.50)/2) 0;
+  height: calc(4 * var(--vmin) * 1.5);
+  margin: calc((4 * var(--vmin) * 1.5) / 2) 0;
 }
 hr.balanced::after {
   content: "";
@@ -227,8 +239,8 @@ hr.balanced::before {
 hr.chapter {
   border: 0;
   text-align: center;
-  height: calc(4 * var(--vmin) * 1.50);
-  margin: calc((4 * var(--vmin) * 1.50)/2) 0;
+  height: calc(4 * var(--vmin) * 1.5);
+  margin: calc((4 * var(--vmin) * 1.5) / 2) 0;
 }
 hr.chapter::after {
   content: " ";
@@ -240,8 +252,40 @@ hr.chapter::before {
 hr {
   border: 0;
   text-align: center;
-  margin: calc((4 * var(--vmin) * 1.50) / 2) 0;
- /* A break of one line only. */
+  margin: calc((4 * var(--vmin) * 1.5) / 2) 0;
+  /* A break of one line only. */
   border-bottom: calc(0.1 * var(--vmin)) dashed rgba(0, 0, 0, 0.3);
+}
+/* Accessibility specific media queries go below. */
+
+/* 1. Dark mode (or light) depending on requirement. */
+@media screen and (prefers-color-scheme: dark) {
+  body {
+    background-color: #343434;
+    color: #fff;
+  }
+}
+
+/* 2. Override animations for users with motion sickness or other vestibular disorders. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 3. Acquired notched space and make sure iOS Safari uses only the available vertical height (100vh). */
+@supports (padding: max(0px)) {
+  body,
+  header,
+  footer {
+    padding-left: min(0vmin, env(safe-area-inset-left));
+    padding-right: min(0vmin, env(safe-area-inset-right));
+  }
+  body {
+    min-height: -webkit-fill-available;
+  }
 }
 /* Balanced Novella Template ENDS HERE: */
