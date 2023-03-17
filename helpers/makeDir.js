@@ -1,15 +1,18 @@
-import path from 'path'
-import { mkdirSync } from 'node:fs'
+import path from 'path';
+import { mkdirSync, writeFileSync } from 'node:fs';
 
-export default function makeDir (dirsArray, parentDir, callback) {
-  dirsArray.forEach(dirName => {
+export default function makeDir(dirsArray, parentDir, callback) {
+  dirsArray.forEach((dirName) => {
+    let dirPath = '';
     if (parentDir === undefined) {
-      mkdirSync(dirName)
+      dirPath = dirName;
     } else {
-      mkdirSync(path.join(parentDir, dirName))
+      dirPath = path.join(parentDir, dirName);
     }
-  })
+    mkdirSync(dirPath);
+    writeFileSync(path.join(dirPath, '.keep'), '');
+  });
   if (typeof callback === 'function') {
-    callback()
+    callback();
   }
 }
