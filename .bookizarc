@@ -1,7 +1,7 @@
 {
-  "token": "qUqcz52TMNiGNVoEBRQEzAtt",
-  "username": "dad18",
-  "email": "dad18@dad.com",
+  "token": "",
+  "username": "",
+  "email": "",
   "mode": {
     "HTML": "html",
     "CSS": "css",
@@ -9,7 +9,7 @@
     "HEAD": "html"
   },
   "urls": {
-    "registrationURL": "http://localhost:3000/api/register",
-    "baseURL": "http://localhost:3000/api/books/"
+    "registrationURL": "https://bubblin.io/api/register",
+    "baseURL": "https://bubblin.io/api/books/"
   }
 }
