@@ -2,7 +2,8 @@
   --height: 100vmax;
   --height: 100dvmax;
   --width: 100vmin;
-  --vmin: calc(var(--width) * 1 / 100); /* Matches the value of 1vmin in the context of an iframed page. */
+  --vmin: calc(var(--width) * 1 / 100);
+  /* Matches the value of 1vmin in the context of an iframed page. */
   --vmax: calc(var(--height) * 1 / 100);
 }
 
@@ -21,67 +22,140 @@
   justify-content: center;
 }
 
+/* Value of the `.overlay` class is set by Bubblin Superbooks. */
+.overlay {
+  position: unset;
+  overflow: unset;
+  top: unset;
+  left: unset;
+  /* Do not set the height or width on the `.overlay` class. 
+    This will affect image rendering during pagination.*/
+  /* height: inherit; 
+  width: inherit; */ 
+  cursor: unset;
+  z-index: unset;
+  backdrop-filter: unset;
+  display: unset;
+}
+
+
 /* FACT: div.parchment element is equal to the html, body { } elements of an iframed page. */
 html,
 body {
-  background: white;
+  background-color: #ffffff;
   font-size: calc(4 * var(--vmin));
-  line-height: calc(4 * var(--vmin) * 1.5);
+  line-height: calc(4 * var(--vmax)); /* line-height: 1443:1115 of font-size. */
   font-style: normal;
   font-synthesis: none;
   font-stretch: ultra-condensed;
   font-variant: no-common-ligatures proportional-nums slashed-zero;
   font-kerning: normal;
-  text-rendering: geometricPrecision;
+  text-rendering: geometricPrecision; /* Except on Safari. Use optimizeLegibility on Safari. */
 
-  font-family: "EB Garamond", serif; /* TODO: Feature => Apply Garamond font-family iff the template being used is NOVEL*/
+  font-family: "EB Garamond", serif;
+  /* TODO: Feature => Apply Garamond font-family iff the template being used is NOVEL*/
+  /* text-wrap: balance; Experimental property under consideration. */
 }
+
 /* Balanced Textbook Template STARTS here: */
 .leaf {
   height: calc(100 * var(--vmax));
   width: calc(100 * var(--vmin));
   margin: auto;
 }
+
 .inner {
   width: 85%;
-  height: 85%;
+  height: 88%;
+  /* background-color: aliceblue; */
 }
+
+/* word-wrap: break-word; */ /* Don't break at words because browser overkills. Use a span for long strings instead. */
 p {
   font-size: unset;
   font-size: calc(4 * var(--vmin));
-  text-indent: calc(5 * var(--vmin));
+  text-indent: calc(8 * var(--vmin));
+  letter-spacing: calc(-1 / 100 * var(--vmin));
+  word-spacing: calc(4 * var(--vmin)/var(--vmax)) !important;
   margin: 0 0 0 0;
 }
+
+p.stretch-last-line {
+  text-align-last: justify;
+}
+
+/* Safari support @7.1+ */
+_::-webkit-full-page-media, _:future, :root p {
+  font-size: calc(99/100 * 4 * var(--vmin));
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Supported on Safari but typescaling on Safari is still broken. Therefore, the hack below: */
+_::-webkit-full-page-media, _:future, p.stretch-last-line {
+  font-size: calc(99/100 * 4 * var(--vmin));
+  text-align-last: auto;
+}
+
+/* Safari support @7.1+ */
+_::-webkit-full-page-media, _:future, :root .small {
+  font-size: 80%;
+}
+
+/* Firefox support Legacy and FF22+ */
+@-moz-document url-prefix() {
+  p {
+    font-size: calc(99.4/100 * 4 * var(--vmin));
+    letter-spacing: normal;
+    -moz-osx-font-smoothing: grayscale;
+    text-transform: none;
+  }
+  p.stretch-last-line {
+    font-size: 98.4%;
+  }
+  @supports (animation: calc(0s)) {
+    p {
+      font-size: calc(99.4/100 * 4 * var(--vmin));
+      letter-spacing: normal;
+      -moz-osx-font-smoothing: grayscale;
+      text-transform: none;   
+    }
+    p.stretch-last-line {
+      font-size: 98.4%;
+    }
+  }
+}
+
 p.start-chapter {
   text-indent: 0;
-  margin: calc(5 * 4 * var(--vmin) * 1.5 - 2px) auto 0;
+  margin: calc(3 * 4 * var(--vmax) * 1.5) auto 0;
 }
+
 p.start-chapter::first-letter {
-  /* initial-letter: 2;
-  */
-  margin: 0 calc(var(--vmin)) 0 0;
-  float: left;
-  font-size: calc(2 * 4 * var(--vmin) * 3 / 2);
-  line-height: calc(2 * 4 * var(--vmin) * 1.5 * 0.95);
   font-family: "Berkshire Swash", cursive;
+  font-size: calc(4 * 4 * var(--vmin));
+  padding: calc(6/10 * var(--vmin)) calc(3/10 * var(--vmin));
+  margin: 0 0 0 calc(6 * var(--vmin)) ;
+  float: left;  
 }
+
 /* Manual Typesetting Helper Classes */
 p.no-indent {
   text-indent: 0;
   /* Continue line printing on a new page with a break on the previous page, but no indent. */
 }
-p.stretch-last-line {
-  text-align-last: justify;
-  /* Not yet supported on Safari */
-}
+
 p.squeeze-para {
   letter-spacing: calc(-1 / 100 * var(--vmin));
   /* Handle orphans and widows manually */
 }
+
 p.stretch-para {
   letter-spacing: calc(1 / 100 * var(--vmin));
   /* Handle orphans and widows manually */
 }
+
 h1,
 h2,
 h3,
@@ -94,137 +168,154 @@ h6 {
   padding: 0;
   font-weight: 100;
   color: #000;
+  text-wrap: balance; /* Imminent progressive enhancement. https://twitter.com/argyleink/status/1631797057840349184 */
 }
+
 h1 {
   width: 100%;
   text-align: center;
-  line-height: calc(2 * 4 * var(--vmin) * 1.5);
+  line-height: 2; /* Twice a --vmax */
   font-size: calc(8 * var(--vmin));
 }
+
 h2 {
   width: 100%;
   text-align: center;
-  line-height: calc(2 * 4 * var(--vmin) * 1.5);
+  line-height: 2; /* Twice a --vmax */
   font-size: calc(6 * var(--vmin));
 }
+
 h3 {
   width: 100%;
   text-align: center;
-  line-height: calc(2 * 4 * var(--vmin) * 1.5);
+  line-height: 1.5; /* 1.5 times of a --vmax */
   font-size: calc(5 * var(--vmin));
 }
+
 h4 {
   width: 100%;
   text-align: center;
-  line-height: calc(2 * 4 * var(--vmin) * 1.5);
+  line-height: 1.5; /* 1.5 times of a --vmax */
   font-weight: 100;
   font-size: calc(4 * var(--vmin));
+  font-family: "EB Garamond", serif;
 }
+
 h5 {
   width: 100%;
   text-align: center;
-  line-height: calc(1 * 4 * var(--vmin) * 1.5);
+  line-height: 1; /* (1 time --vmax) */
   font-size: calc(4 * var(--vmin));
 }
+
 h6 {
-  line-height: calc(1 * 4 * var(--vmin) * 1.5);
+  line-height: 1; /* (1 time --vmax) */
   font-size: calc(4 * var(--vmin));
 }
+
 a {
   color: #006eff;
   outline: 0 none;
   text-decoration: none;
 }
+
 a:focus,
 a:active,
 a:hover {
   outline: 0 none;
   color: #0b56ab;
 }
+
 img {
   border: 0;
   -ms-interpolation-mode: bicubic !important;
   display: block !important;
   margin: calc(1 / 2 * 4 * var(--vmin) * 1.5) auto;
 }
+
 .justify {
   text-align: justify;
 }
+
 .italic {
   font-style: italic;
 }
-.overlay {
-  position: unset;
-  overflow: unset;
-  top: unset;
-  left: unset;
-  height: inherit;
-  width: inherit;
-  cursor: unset;
-  z-index: unset;
-  backdrop-filter: unset;
-  display: unset;
-}
+
 .left {
   float: left;
 }
+
 .right {
   float: right;
 }
+
 .center {
   text-align: center;
   margin: inherit auto;
 }
+
 .small {
   font-size: 80%;
 }
+
 blockquote {
-  text-align: center;
+  text-align: justify;
   font-style: italic;
   position: relative;
-  quotes: "\201C""\201D""\2018""\2019";
+  quotes: "\201C" "\201D" "\2018" "\2019";
   margin: calc(1 / 2 * (150 * var(--vmax) * (1115 / 1443)) / 100 * 7 / 5) auto;
   margin: calc(1 / 2 * 4 * var(--vmin) * 1.5) 0;
   margin: 0 0;
   display: inline-block;
   width: 100%;
 }
-blockquote > p,
-blockquote > em {
+
+blockquote p,
+blockquote em,
+blockquote cite {
   margin: 0 auto !important;
+  text-align: justify;
 }
-pre,
-code {
+
+blockquote.no-indent p {
+  text-indent: 0;
+}
+
+pre {
   white-space: pre-wrap;
   word-wrap: break-word;
   margin: 0;
-  padding: 0;
+  padding: calc(4 * var(--vmin));
   text-align: center;
   font-family: "EB Garamond", serif;
-  font-style: normal;
-  font-synthesis: none;
-  font-stretch: ultra-condensed;
-  font-variant: no-common-ligatures proportional-nums slashed-zero;
-  font-size: calc(4 * var(--vmin));
-  line-height: 1.5;
+  font-style: italic;
   font-kerning: normal;
-  text-rendering: geometricPrecision;
+  font-size: 110%;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  text-transform: none;   
+  text-wrap: balance;
 }
+
 ol {
   margin: calc((4 * var(--vmin) * 1.5) / 2) calc(5 * var(--vmin));
   padding: 0;
   list-style-type: none;
   counter-reset: step-counter calc(var(--start) - 1);
 }
+
 ol li::before {
   content: counter(step-counter) ". ";
   margin-right: var(--vmin);
   color: black;
   font-weight: bold;
 }
+
 ol li {
   counter-increment: step-counter;
 }
+
 ol li.split-li::before {
   content: "";
   margin-right: calc(-8 / 10 * var(--vmin));
@@ -232,67 +323,77 @@ ol li.split-li::before {
   color: black;
   font-weight: bold;
 }
+
 ul {
   margin: 0 0 0 calc(4 * var(--vmin));
   padding: 0;
   list-style: none;
 }
+
 ul li {
   margin: 0;
   padding: 0;
 }
+
 hr.section {
   border: 0;
   text-align: center;
   height: calc(4 * var(--vmin) * 1.5);
   margin: calc((4 * var(--vmin) * 1.5) / 2) 0;
 }
+
 hr.section::after {
   content: "";
 }
+
 hr.section::before {
-  content: "⤝◈⤞";
-  color: #000;
+  content: "✧";
+  color: #8e8e8e;
 }
+
 hr.balanced {
   border: 0;
   text-align: center;
   height: calc(4 * var(--vmin) * 1.5);
   margin: calc((4 * var(--vmin) * 1.5) / 2) 0;
 }
+
 hr.balanced::after {
   content: "";
 }
+
 hr.balanced::before {
   content: "☯";
-  color: #000;
+  color: #8e8e8e;
+  font-family: monospace;
 }
-hr.chapter {
-  border: 0;
-  text-align: center;
-  height: calc(4 * var(--vmin) * 1.5);
-  margin: calc((4 * var(--vmin) * 1.5) / 2) 0;
-}
-hr.chapter::after {
-  content: " ";
-}
-hr.chapter::before {
-  content: "⤝◈◈◈⤞";
-  color: #000;
-}
+
 hr {
   border: 0;
   text-align: center;
   margin: calc((4 * var(--vmin) * 1.5) / 2) 0;
   /* A break of one line only. */
-  border-bottom: calc(0.1 * var(--vmin)) dashed rgba(0, 0, 0, 0.3);
+  border-bottom: calc(0.1 * var(--vmin)) dashed hsla(0, 0%, 50%, 0.5);
 }
+
 /* Accessibility specific media queries go below. */
 
 /* 1. Dark mode (or light) depending on requirement. */
 @media screen and (prefers-color-scheme: dark) {
-  body {
+
+  body,
+  html {
     background-color: #343434;
+    color: #fff;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     color: #fff;
   }
 }
@@ -309,12 +410,14 @@ hr {
 
 /* 3. Acquired notched space and make sure iOS Safari uses only the available vertical height (100vh). */
 @supports (padding: max(0px)) {
+
   body,
   header,
   footer {
     padding-left: min(0vmin, env(safe-area-inset-left));
     padding-right: min(0vmin, env(safe-area-inset-right));
   }
+
   body {
     min-height: -webkit-fill-available;
   }

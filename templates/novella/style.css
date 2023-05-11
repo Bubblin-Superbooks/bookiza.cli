@@ -22,10 +22,27 @@
   justify-content: center;
 }
 
+/* Value of the `.overlay` class is set by Bubblin Superbooks. */
+.overlay {
+  position: unset;
+  overflow: unset;
+  top: unset;
+  left: unset;
+  /* Do not set the height or width on the `.overlay` class. 
+    This will affect image rendering during pagination.*/
+  /* height: inherit; 
+  width: inherit; */ 
+  cursor: unset;
+  z-index: unset;
+  backdrop-filter: unset;
+  display: unset;
+}
+
+
 /* FACT: div.parchment element is equal to the html, body { } elements of an iframed page. */
 html,
 body {
-  background-color: #fffcfd;
+  background-color: #ffffff;
   font-size: calc(4 * var(--vmin));
   line-height: calc(4 * var(--vmax)); /* line-height: 1443:1115 of font-size. */
   font-style: normal;
@@ -33,14 +50,14 @@ body {
   font-stretch: ultra-condensed;
   font-variant: no-common-ligatures proportional-nums slashed-zero;
   font-kerning: normal;
-  text-rendering: geometricPrecision;
+  text-rendering: geometricPrecision; /* Except on Safari. Use optimizeLegibility on Safari. */
 
   font-family: "EB Garamond", serif;
   /* TODO: Feature => Apply Garamond font-family iff the template being used is NOVEL*/
   /* text-wrap: balance; Experimental property under consideration. */
 }
 
-/* Balanced Novel Template STARTS here: */
+/* Balanced Novella Template STARTS here: */
 .leaf {
   height: calc(100 * var(--vmax));
   width: calc(100 * var(--vmin));
@@ -50,44 +67,83 @@ body {
 .inner {
   width: 85%;
   height: 88%;
+  /* background-color: aliceblue; */
 }
 
+/* word-wrap: break-word; */ /* Don't break at words because browser overkills. Use a span for long strings instead. */
 p {
   font-size: unset;
   font-size: calc(4 * var(--vmin));
-  text-indent: calc(5 * var(--vmin));
+  text-indent: calc(8 * var(--vmin));
   letter-spacing: calc(-1 / 100 * var(--vmin));
-  word-spacing: calc(0.1 * var(--vmin)) !important;
+  word-spacing: calc(4 * var(--vmin)/var(--vmax)) !important;
   margin: 0 0 0 0;
-  word-wrap: break-word;
-  text-shadow: 0 1px 0px rgba(255, 255, 255, 1);
-  /* background-color: hsla(0, 100%, 50%, 0.5); */
+}
+
+p.stretch-last-line {
+  text-align-last: justify;
+}
+
+/* Safari support @7.1+ */
+_::-webkit-full-page-media, _:future, :root p {
+  font-size: calc(99/100 * 4 * var(--vmin));
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Supported on Safari but typescaling on Safari is still broken. Therefore, the hack below: */
+_::-webkit-full-page-media, _:future, p.stretch-last-line {
+  font-size: calc(99/100 * 4 * var(--vmin));
+  text-align-last: auto;
+}
+
+/* Safari support @7.1+ */
+_::-webkit-full-page-media, _:future, :root .small {
+  font-size: 80%;
+}
+
+/* Firefox support Legacy and FF22+ */
+@-moz-document url-prefix() {
+  p {
+    font-size: calc(99.4/100 * 4 * var(--vmin));
+    letter-spacing: normal;
+    -moz-osx-font-smoothing: grayscale;
+    text-transform: none;
+  }
+  p.stretch-last-line {
+    font-size: 98.4%;
+  }
+  @supports (animation: calc(0s)) {
+    p {
+      font-size: calc(99.4/100 * 4 * var(--vmin));
+      letter-spacing: normal;
+      -moz-osx-font-smoothing: grayscale;
+      text-transform: none;   
+    }
+    p.stretch-last-line {
+      font-size: 98.4%;
+    }
+  }
 }
 
 p.start-chapter {
   text-indent: 0;
-  margin: calc(5 * 4 * var(--vmin) * 1.5) auto 0;
+  margin: calc(3 * 4 * var(--vmax) * 1.5) auto 0;
 }
 
 p.start-chapter::first-letter {
-  /* initial-letter: 2;
-  */
-  margin: 0 calc(var(--vmin)) 0 0;
-  float: left;
-  font-size: calc(2 * 4 * var(--vmin) * 3 / 2);
-  line-height: calc(2 * 4 * var(--vmin) * 1.5 * 0.95);
   font-family: "Berkshire Swash", cursive;
+  font-size: calc(4 * 4 * var(--vmin));
+  padding: calc(6/10 * var(--vmin)) calc(3/10 * var(--vmin));
+  margin: 0 0 0 calc(6 * var(--vmin)) ;
+  float: left;  
 }
 
 /* Manual Typesetting Helper Classes */
 p.no-indent {
   text-indent: 0;
   /* Continue line printing on a new page with a break on the previous page, but no indent. */
-}
-
-p.stretch-last-line {
-  text-align-last: justify;
-  /* Not yet supported on Safari */
 }
 
 p.squeeze-para {
@@ -112,6 +168,7 @@ h6 {
   padding: 0;
   font-weight: 100;
   color: #000;
+  text-wrap: balance; /* Imminent progressive enhancement. https://twitter.com/argyleink/status/1631797057840349184 */
 }
 
 h1 {
@@ -141,6 +198,7 @@ h4 {
   line-height: 1.5; /* 1.5 times of a --vmax */
   font-weight: 100;
   font-size: calc(4 * var(--vmin));
+  font-family: "EB Garamond", serif;
 }
 
 h5 {
@@ -183,19 +241,6 @@ img {
   font-style: italic;
 }
 
-.overlay {
-  position: unset;
-  overflow: unset;
-  top: unset;
-  left: unset;
-  height: inherit;
-  width: inherit;
-  cursor: unset;
-  z-index: unset;
-  backdrop-filter: unset;
-  display: unset;
-}
-
 .left {
   float: left;
 }
@@ -226,26 +271,31 @@ blockquote {
 }
 
 blockquote p,
-blockquote em {
+blockquote em,
+blockquote cite {
   margin: 0 auto !important;
+  text-align: justify;
 }
 
-pre,
-code {
+blockquote.no-indent p {
+  text-indent: 0;
+}
+
+pre {
   white-space: pre-wrap;
   word-wrap: break-word;
   margin: 0;
-  padding: 0;
+  padding: calc(4 * var(--vmin));
   text-align: center;
   font-family: "EB Garamond", serif;
-  font-style: normal;
-  font-synthesis: none;
-  font-stretch: ultra-condensed;
-  font-variant: no-common-ligatures proportional-nums slashed-zero;
-  font-size: calc(4 * var(--vmin));
-  line-height: 1.5;
+  font-style: italic;
   font-kerning: normal;
-  text-rendering: geometricPrecision;
+  font-size: 110%;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  text-transform: none;   
+  text-wrap: balance;
 }
 
 ol {
@@ -297,7 +347,7 @@ hr.section::after {
 }
 
 hr.section::before {
-  content: "⤝◈⤞";
+  content: "✧";
   color: #8e8e8e;
 }
 
@@ -316,22 +366,6 @@ hr.balanced::before {
   content: "☯";
   color: #8e8e8e;
   font-family: monospace;
-}
-
-hr.chapter {
-  border: 0;
-  text-align: center;
-  height: calc(4 * var(--vmin) * 1.5);
-  margin: calc((4 * var(--vmin) * 1.5) / 2) 0;
-}
-
-hr.chapter::after {
-  content: " ";
-}
-
-hr.chapter::before {
-  content: "⤝◈◈◈⤞";
-  color: #8e8e8e;
 }
 
 hr {
@@ -389,4 +423,4 @@ hr {
   }
 }
 
-/* Balanced Novel Template ENDS HERE: */
+/* Balanced Novella Template ENDS HERE: */
