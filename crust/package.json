@@ -20,11 +20,11 @@
   "dependencies": {
     "babel-preset-env": "^1.7.0",
     "book-length": "^1.2.1",
-    "browser-sync": "^2.28.3",
+    "browser-sync": "^2.29.1",
     "chalk": "^5.2.0",
     "del": "^7.0.0",
     "delayed": "^2.0.0",
-    "fs-extra": "^11.1.0",
+    "fs-extra": "^11.1.1",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-compile-handlebars": "^0.6.1",
@@ -36,7 +36,7 @@
     "gulp-postcss": "^9.0.1",
     "gulp-sass": "^5.1.0",
     "gulp-stylus": "^3.0.0",
-    "js-cookie": "^3.0.1",
+    "js-cookie": "^3.0.5",
     "path": "^0.12.7",
     "shelljs": "^0.8.5"
   },

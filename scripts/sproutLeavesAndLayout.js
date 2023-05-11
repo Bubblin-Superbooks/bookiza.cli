@@ -103,11 +103,14 @@ const setUp = (projectname, leafs, templateName) => {
           bookrc.name = projectname;
           bookrc.type = templateName;
           bookrc.has_page_numbers = false;
-          bookrc.cover = {
-            punchline: '', toc: '', author_detail: '', colophon: '', synopsis: '',
-          };
+          bookrc.punchline = '';
+          bookrc.table_of_contents = '';
+          bookrc.author_detail = '';
+          bookrc.colophon = '';
+          bookrc.summary = '';
+          bookrc.language = '';
           bookrc.status = 'draft';
-          bookrc.asset_url = '';// rawgit or cloudinary path
+          bookrc.asset_url = ''; // Allow only rawgit, self, or the cloudinary path. Maintain a whitelist.
           bookrc.book_url = '';
           [bookrc.mode = {
             HTML: 'html', CSS: 'css', JS: 'js', HEAD: 'html',
