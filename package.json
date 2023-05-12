@@ -41,7 +41,6 @@
   },
   "dependencies": {
     "arc-bookiza": "^2.0.0",
-    "book-length": "^1.2.1",
     "center-align": "1.0.1",
     "chalk": "5.2.0",
     "chalkline": "0.0.5",

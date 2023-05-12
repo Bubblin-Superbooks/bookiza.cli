@@ -4,7 +4,6 @@ import chalk from 'chalk';
 import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import book from 'book-length';
 import { Command } from 'commander';
 
 import createNewProject from '../lib/new.js';
@@ -18,6 +17,8 @@ import renderPages from '../lib/render.js';
 import publish from '../lib/publish.js';
 import start from '../lib/server.js';
 import register from '../lib/register.js';
+import bookLength from '../lib/bookLength.js';
+
 
 /* __dirname isn't available inside ES modules: */
 // eslint-disable-next-line no-underscore-dangle
@@ -133,7 +134,7 @@ program
   .description('Book length')
   .action(() => {
     try {
-      console.log(chalk.greenBright(`Book length: ${chalk.magentaBright(book.length())}`));
+      console.log(chalk.greenBright(`Book length: ${chalk.magentaBright(bookLength())} pages.`));
     } catch (ex) {
       console.error(ex.stack);
     }
