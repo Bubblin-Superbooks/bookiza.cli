@@ -101,7 +101,7 @@ const setUp = (projectname, leafs, templateName) => {
           const bookrc = {};
 
           bookrc.name = projectname;
-          bookrc.type = templateName;
+          bookrc.layout = templateName;
           bookrc.has_page_numbers = false;
           bookrc.punchline = '';
           bookrc.table_of_contents = '';

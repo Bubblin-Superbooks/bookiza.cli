@@ -242,13 +242,6 @@
   "resolved" "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz"
   "version" "1.0.2"
 
-"book-length@^1.2.1":
-  "integrity" "sha512-p17lh6R5KAMbC/tBglafHcf20oV50rAIZVJuiUT85gkEPW3orDX8NHEjytdmH7vKEIESaVzWZWErmLgp2+62Gg=="
-  "resolved" "https://registry.npmjs.org/book-length/-/book-length-1.2.1.tgz"
-  "version" "1.2.1"
-  dependencies:
-    "shelljs" "0.8.4"
-
 "brace-expansion@^1.1.7":
   "integrity" "sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA=="
   "resolved" "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.11.tgz"
@@ -1565,15 +1558,6 @@
   "integrity" "sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A=="
   "resolved" "https://registry.npmjs.org/shebang-regex/-/shebang-regex-3.0.0.tgz"
   "version" "3.0.0"
-
-"shelljs@0.8.4":
-  "integrity" "sha512-7gk3UZ9kOfPLIAbslLzyWeGiEqx9e3rxwZM0KE6EL8GlGwjym9Mrlx5/p33bWTu9YG6vcS4MBxYZDHYr5lr8BQ=="
-  "resolved" "https://registry.npmjs.org/shelljs/-/shelljs-0.8.4.tgz"
-  "version" "0.8.4"
-  dependencies:
-    "glob" "^7.0.0"
-    "interpret" "^1.0.0"
-    "rechoir" "^0.6.2"
 
 "shelljs@0.8.5":
   "integrity" "sha512-TiwcRcrkhHvbrZbnRcFYMLl30Dfov3HKqzp5tO5b4pt6G/SezKcYhmDg15zXVBswHmctSAQKznqNW2LO5tTDow=="

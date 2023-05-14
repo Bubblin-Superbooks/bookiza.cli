@@ -19,7 +19,6 @@ import start from '../lib/server.js';
 import register from '../lib/register.js';
 import bookLength from '../lib/bookLength.js';
 
-
 /* __dirname isn't available inside ES modules: */
 // eslint-disable-next-line no-underscore-dangle
 const __filename = fileURLToPath(import.meta.url);
@@ -45,7 +44,7 @@ program
     console.log();
   });
 
-// Add leaf(ves)
+// Add leaves.
 program
   .command('add')
   .alias('a')
@@ -79,6 +78,7 @@ program
     console.log();
   });
 
+// TODO: Deprecate this method.
 // Remove page
 program
   .command('remove <removeAt>')
