@@ -77,7 +77,7 @@ p {
   text-indent: calc(8 * var(--vmin));
   letter-spacing: calc(-1 / 100 * var(--vmin));
   word-spacing: calc(4 * var(--vmin)/var(--vmax)) !important;
-  margin: 0 0 0 0;
+  /* margin: calc(4 * var(--vmin)) 0 0 calc(5 * var(--vmin)); */
 }
 
 p.stretch-last-line {
@@ -100,7 +100,7 @@ _::-webkit-full-page-media, _:future, p.stretch-last-line {
 
 /* Safari support @7.1+ */
 _::-webkit-full-page-media, _:future, :root .small {
-  font-size: 80%;
+  font-size: 90%;
 }
 
 /* Firefox support Legacy and FF22+ */
@@ -146,13 +146,13 @@ p.no-indent {
   /* Continue line printing on a new page with a break on the previous page, but no indent. */
 }
 
-p.squeeze-para {
-  letter-spacing: calc(-1 / 100 * var(--vmin));
+p.squeeze, ol li.squeeze {
+  letter-spacing: calc(-10 / 100 * var(--vmin));
   /* Handle orphans and widows manually */
 }
 
-p.stretch-para {
-  letter-spacing: calc(1 / 100 * var(--vmin));
+p.stretch, ol li.stretch {
+  letter-spacing: calc(10 / 100 * var(--vmin));
   /* Handle orphans and widows manually */
 }
 
@@ -167,7 +167,7 @@ h6 {
   margin: 0 0;
   padding: 0;
   font-weight: 100;
-  color: #000;
+  color: var(--black);
   text-wrap: balance; /* Imminent progressive enhancement. https://twitter.com/argyleink/status/1631797057840349184 */
 }
 
@@ -181,7 +181,7 @@ h1 {
 h2 {
   width: 100%;
   text-align: center;
-  line-height: 2; /* Twice a --vmax */
+  line-height: 1.5; /* Twice a --vmax */
   font-size: calc(6 * var(--vmin));
 }
 
@@ -196,9 +196,7 @@ h4 {
   width: 100%;
   text-align: center;
   line-height: 1.5; /* 1.5 times of a --vmax */
-  font-weight: 100;
   font-size: calc(4 * var(--vmin));
-  font-family: "EB Garamond", serif;
 }
 
 h5 {
@@ -255,7 +253,11 @@ img {
 }
 
 .small {
-  font-size: 80%;
+  font-size: 90%;
+}
+
+.italic {
+  font-style: italic;
 }
 
 blockquote {
@@ -303,36 +305,45 @@ ol {
   padding: 0;
   list-style-type: none;
   counter-reset: step-counter calc(var(--start) - 1);
+  text-align: left;
 }
 
-ol li::before {
+ol > li::before {
   content: counter(step-counter) ". ";
   margin-right: var(--vmin);
-  color: black;
+  color: var(--black);
   font-weight: bold;
 }
 
-ol li {
+ol > li {
   counter-increment: step-counter;
 }
 
-ol li.split-li::before {
+ol > li.split-li::before {
   content: "";
-  margin-right: calc(-8 / 10 * var(--vmin));
-  background-color: rgba(255, 255, 255, 1);
+  margin-right: calc(-2 / 10 * var(--vmin));
+  background-color: var(--white);
   color: black;
   font-weight: bold;
 }
 
 ul {
-  margin: 0 0 0 calc(4 * var(--vmin));
-  padding: 0;
+  margin: calc((4 * var(--vmin) * 1.5) / 2) calc(5 * var(--vmin));
+  padding: 0 calc((4 * var(--vmin) * 1.5) / 2);
+  text-align: left;
   list-style: none;
 }
 
 ul li {
   margin: 0;
   padding: 0;
+  list-style-type: '- ' /* '\002B\00a0\00a0'; */
+}
+
+ul li.split-li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 hr.section {
@@ -393,7 +404,10 @@ hr {
   h3,
   h4,
   h5,
-  h6 {
+  h6,
+  ul li,
+  ol li,
+  ol li::before {
     color: #fff;
   }
 }
