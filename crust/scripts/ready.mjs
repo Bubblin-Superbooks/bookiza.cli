@@ -1,10 +1,7 @@
-import fse from 'fs-extra'
+import fs from 'fs-extra'
 import chalk from 'chalk'
 
-'use strong'
-
-
-fse.readFile('./license.txt', 'utf8', (err, data) => {
+fs.readFile('./license.txt', 'utf8', (err, data) => {
   if (err) {
     return new Error('Couldn\'t read license information.')
   }

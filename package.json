@@ -1,6 +1,6 @@
 {
   "name": "bookiza",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "description": "The book reification framework for the web",
   "logo": {
     "file": "./assets/images/bookiza.png"
@@ -42,12 +42,12 @@
   "dependencies": {
     "arc-bookiza": "^2.0.0",
     "center-align": "1.0.1",
-    "chalk": "5.2.0",
+    "chalk": "5.3.0",
     "chalkline": "0.0.5",
     "check-types": "11.2.2",
     "co": "4.6.0",
     "co-prompt": "1.0.0",
-    "commander": "10.0.1",
+    "commander": "11.0.0",
     "dateformat": "5.0.3",
     "fs-extra": "11.1.1",
     "jsonfile": "6.1.0",
@@ -59,7 +59,7 @@
     "terminal-link": "3.0.0"
   },
   "devDependencies": {
-    "eslint": "^8.40.0",
+    "eslint": "^8.45.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5"
   }

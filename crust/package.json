@@ -14,7 +14,7 @@
     "url": "git+https://github/project/url/here"
   },
   "scripts": {
-    "postinstall": "node ./crust/scripts/ready.js"
+    "postinstall": "node ./crust/scripts/ready.mjs"
   },
   "type": "module",
   "dependencies": {
