@@ -1,77 +1,78 @@
 /*
-
-See how a working CSS template at https://github.com/bookiza/templates
-
+  Learn how a Superbook css layout template works at https://bubblin.io/scrolls/docs/layout.
 */
+
 :root {
-    --height: 100vmax;
-    --height: 100dvmax;
-    --width: 100vmin;
-    --vmin: calc(var(--width) * 1 / 100); /* Matches the value of 1vmin in the context of an iframed page. */
-    --vmax: calc(var(--height) * 1 / 100);
+  --height: 100vmax;
+  --height: 100dvmax;
+  --width: 100vmin;
+  --bmin: calc(
+    var(--width) * 1 / 100
+  ); /* Matches the value of 1vmin in the context of an iframed page. */
+  --bmax: calc(var(--height) * 1 / 100);
 }
 
 *,
 *:after,
 *:before {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .flex {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
 /* FACT: div.parchment element is equal to the html, body { } elements of an iframed page. */
 html,
 body {
-    background: white;
-    font-size: calc(4 * var(--vmin));
-    line-height: calc(4 * var(--vmin) * 1.5);
-    font-style: normal;
-    font-synthesis: none;
-    font-stretch: ultra-condensed;
-    font-variant: no-common-ligatures proportional-nums slashed-zero;
-    font-kerning: normal;
-    text-rendering: geometricPrecision;
+  background: white;
+  font-size: calc(4 * var(--bmin));
+  line-height: calc(4 * var(--bmin) * 1.5);
+  font-style: normal;
+  font-synthesis: none;
+  font-stretch: ultra-condensed;
+  font-variant: no-common-ligatures proportional-nums slashed-zero;
+  font-kerning: normal;
+  text-rendering: geometricPrecision;
 
-    font-family: "EB Garamond", serif;
+  font-family: "EB Garamond", serif;
 }
 /* Put your template css below and above accessibility classes. */
 
 /* Accessibility specific media queries go below. */
 /* 1. Dark mode (or light) depending on requirement. */
 @media screen and (prefers-color-scheme: dark) {
-    body {
-        background-color: #343434;
-        color: #fff;
-    }
+  body {
+    background-color: #343434;
+    color: #fff;
+  }
 }
 
 /* 2. Override animations for users with motion sickness or other vestibular disorders. */
 @media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* 3. Acquired notched space and make sure iOS Safari uses only the available vertical height (100vh). */
 @supports (padding: max(0px)) {
-    body,
-    header,
-    footer {
-        padding-left: min(0vmin, env(safe-area-inset-left));
-        padding-right: min(0vmin, env(safe-area-inset-right));
-    }
-    body {
-        min-height: -webkit-fill-available;
-    }
+  body,
+  header,
+  footer {
+    padding-left: min(0vmin, env(safe-area-inset-left));
+    padding-right: min(0vmin, env(safe-area-inset-right));
+  }
+  body {
+    min-height: -webkit-fill-available;
+  }
 }
 /* Balanced blank template ENDS HERE: */

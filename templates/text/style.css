@@ -1,10 +1,14 @@
+/*
+  Learn how a Superbook css layout template works at https://bubblin.io/scrolls/docs/layout.
+*/
+
 :root {
   --height: 100vmax;
   --height: 100dvmax;
   --width: 100vmin;
-  --vmin: calc(var(--width) * 1 / 100);
+  --bmin: calc(var(--width) * 1 / 100);
   /* Matches the value of 1vmin in the context of an iframed page. */
-  --vmax: calc(var(--height) * 1 / 100);
+  --bmax: calc(var(--height) * 1 / 100);
 }
 
 *,
@@ -43,8 +47,8 @@
 html,
 body {
   background-color: #ffffff;
-  font-size: calc(4 * var(--vmin));
-  line-height: calc(4 * var(--vmax)); /* line-height: 1443:1115 of font-size. */
+  font-size: calc(4 * var(--bmin));
+  line-height: calc(4 * var(--bmax)); /* line-height: 1443:1115 of font-size. */
   font-style: normal;
   font-synthesis: none;
   font-stretch: ultra-condensed;
@@ -59,8 +63,8 @@ body {
 
 /* Balanced Textbook Template STARTS here: */
 .leaf {
-  height: calc(100 * var(--vmax));
-  width: calc(100 * var(--vmin));
+  height: calc(100 * var(--bmax));
+  width: calc(100 * var(--bmin));
   margin: auto;
 }
 
@@ -73,11 +77,11 @@ body {
 /* word-wrap: break-word; */ /* Don't break at words because browser overkills. Use a span for long strings instead. */
 p {
   font-size: unset;
-  font-size: calc(4 * var(--vmin));
-  text-indent: calc(8 * var(--vmin));
-  letter-spacing: calc(-1 / 100 * var(--vmin));
-  word-spacing: calc(4 * var(--vmin)/var(--vmax)) !important;
-  /* margin: calc(4 * var(--vmin)) 0 0 calc(5 * var(--vmin)); */
+  font-size: calc(4 * var(--bmin));
+  text-indent: calc(8 * var(--bmin));
+  letter-spacing: calc(-1 / 100 * var(--bmin));
+  word-spacing: calc(4 * var(--bmin)/var(--bmax)) !important;
+  /* margin: calc(4 * var(--bmin)) 0 0 calc(5 * var(--bmin)); */
 }
 
 p.stretch-last-line {
@@ -86,7 +90,7 @@ p.stretch-last-line {
 
 /* Safari support @7.1+ */
 _::-webkit-full-page-media, _:future, :root p {
-  font-size: calc(99/100 * 4 * var(--vmin));
+  font-size: calc(99/100 * 4 * var(--bmin));
   -webkit-text-size-adjust: none;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -94,7 +98,7 @@ _::-webkit-full-page-media, _:future, :root p {
 
 /* Supported on Safari but typescaling on Safari is still broken. Therefore, the hack below: */
 _::-webkit-full-page-media, _:future, p.stretch-last-line {
-  font-size: calc(99/100 * 4 * var(--vmin));
+  font-size: calc(99/100 * 4 * var(--bmin));
   text-align-last: auto;
 }
 
@@ -106,7 +110,7 @@ _::-webkit-full-page-media, _:future, :root .small {
 /* Firefox support Legacy and FF22+ */
 @-moz-document url-prefix() {
   p {
-    font-size: calc(99.4/100 * 4 * var(--vmin));
+    font-size: calc(99.4/100 * 4 * var(--bmin));
     letter-spacing: normal;
     -moz-osx-font-smoothing: grayscale;
     text-transform: none;
@@ -116,7 +120,7 @@ _::-webkit-full-page-media, _:future, :root .small {
   }
   @supports (animation: calc(0s)) {
     p {
-      font-size: calc(99.4/100 * 4 * var(--vmin));
+      font-size: calc(99.4/100 * 4 * var(--bmin));
       letter-spacing: normal;
       -moz-osx-font-smoothing: grayscale;
       text-transform: none;   
@@ -129,14 +133,14 @@ _::-webkit-full-page-media, _:future, :root .small {
 
 p.start-chapter {
   text-indent: 0;
-  margin: calc(3 * 4 * var(--vmax) * 1.5) auto 0;
+  margin: calc(3 * 4 * var(--bmax) * 1.5) auto 0;
 }
 
 p.start-chapter::first-letter {
   font-family: "Berkshire Swash", cursive;
-  font-size: calc(4 * 4 * var(--vmin));
-  padding: calc(6/10 * var(--vmin)) calc(3/10 * var(--vmin));
-  margin: 0 0 0 calc(6 * var(--vmin)) ;
+  font-size: calc(4 * 4 * var(--bmin));
+  padding: calc(6/10 * var(--bmin)) calc(3/10 * var(--bmin));
+  margin: 0 0 0 calc(6 * var(--bmin)) ;
   float: left;  
 }
 
@@ -147,12 +151,12 @@ p.no-indent {
 }
 
 p.squeeze, ol li.squeeze {
-  letter-spacing: calc(-10 / 100 * var(--vmin));
+  letter-spacing: calc(-10 / 100 * var(--bmin));
   /* Handle orphans and widows manually */
 }
 
 p.stretch, ol li.stretch {
-  letter-spacing: calc(10 / 100 * var(--vmin));
+  letter-spacing: calc(10 / 100 * var(--bmin));
   /* Handle orphans and widows manually */
 }
 
@@ -174,41 +178,41 @@ h6 {
 h1 {
   width: 100%;
   text-align: center;
-  line-height: 2; /* Twice a --vmax */
-  font-size: calc(8 * var(--vmin));
+  line-height: 2; /* Twice a --bmax */
+  font-size: calc(8 * var(--bmin));
 }
 
 h2 {
   width: 100%;
   text-align: center;
-  line-height: 1.5; /* Twice a --vmax */
-  font-size: calc(6 * var(--vmin));
+  line-height: 1.5; /* Twice a --bmax */
+  font-size: calc(6 * var(--bmin));
 }
 
 h3 {
   width: 100%;
   text-align: center;
-  line-height: 1.5; /* 1.5 times of a --vmax */
-  font-size: calc(5 * var(--vmin));
+  line-height: 1.5; /* 1.5 times of a --bmax */
+  font-size: calc(5 * var(--bmin));
 }
 
 h4 {
   width: 100%;
   text-align: center;
-  line-height: 1.5; /* 1.5 times of a --vmax */
-  font-size: calc(4 * var(--vmin));
+  line-height: 1.5; /* 1.5 times of a --bmax */
+  font-size: calc(4 * var(--bmin));
 }
 
 h5 {
   width: 100%;
   text-align: center;
-  line-height: 1; /* (1 time --vmax) */
-  font-size: calc(4 * var(--vmin));
+  line-height: 1; /* (1 time --bmax) */
+  font-size: calc(4 * var(--bmin));
 }
 
 h6 {
-  line-height: 1; /* (1 time --vmax) */
-  font-size: calc(4 * var(--vmin));
+  line-height: 1; /* (1 time --bmax) */
+  font-size: calc(4 * var(--bmin));
 }
 
 a {
@@ -228,7 +232,7 @@ img {
   border: 0;
   -ms-interpolation-mode: bicubic !important;
   display: block !important;
-  margin: calc(1 / 2 * 4 * var(--vmin) * 1.5) auto;
+  margin: calc(1 / 2 * 4 * var(--bmin) * 1.5) auto;
 }
 
 .justify {
@@ -265,8 +269,8 @@ blockquote {
   font-style: italic;
   position: relative;
   quotes: "\201C" "\201D" "\2018" "\2019";
-  margin: calc(1 / 2 * (150 * var(--vmax) * (1115 / 1443)) / 100 * 7 / 5) auto;
-  margin: calc(1 / 2 * 4 * var(--vmin) * 1.5) 0;
+  margin: calc(1 / 2 * (150 * var(--bmax) * (1115 / 1443)) / 100 * 7 / 5) auto;
+  margin: calc(1 / 2 * 4 * var(--bmin) * 1.5) 0;
   margin: 0 0;
   display: inline-block;
   width: 100%;
@@ -287,7 +291,7 @@ pre {
   white-space: pre-wrap;
   word-wrap: break-word;
   margin: 0;
-  padding: calc(4 * var(--vmin));
+  padding: calc(4 * var(--bmin));
   text-align: center;
   font-family: "EB Garamond", serif;
   font-style: italic;
@@ -301,7 +305,7 @@ pre {
 }
 
 ol {
-  margin: calc((4 * var(--vmin) * 1.5) / 2) calc(5 * var(--vmin));
+  margin: calc((4 * var(--bmin) * 1.5) / 2) calc(5 * var(--bmin));
   padding: 0;
   list-style-type: none;
   counter-reset: step-counter calc(var(--start) - 1);
@@ -310,7 +314,7 @@ ol {
 
 ol > li::before {
   content: counter(step-counter) ". ";
-  margin-right: var(--vmin);
+  margin-right: var(--bmin);
   color: var(--black);
   font-weight: bold;
 }
@@ -321,15 +325,15 @@ ol > li {
 
 ol > li.split-li::before {
   content: "";
-  margin-right: calc(-2 / 10 * var(--vmin));
+  margin-right: calc(-2 / 10 * var(--bmin));
   background-color: var(--white);
   color: black;
   font-weight: bold;
 }
 
 ul {
-  margin: calc((4 * var(--vmin) * 1.5) / 2) calc(5 * var(--vmin));
-  padding: 0 calc((4 * var(--vmin) * 1.5) / 2);
+  margin: calc((4 * var(--bmin) * 1.5) / 2) calc(5 * var(--bmin));
+  padding: 0 calc((4 * var(--bmin) * 1.5) / 2);
   text-align: left;
   list-style: none;
 }
@@ -349,8 +353,8 @@ ul li.split-li {
 hr.section {
   border: 0;
   text-align: center;
-  height: calc(4 * var(--vmin) * 1.5);
-  margin: calc((4 * var(--vmin) * 1.5) / 2) 0;
+  height: calc(4 * var(--bmin) * 1.5);
+  margin: calc((4 * var(--bmin) * 1.5) / 2) 0;
 }
 
 hr.section::after {
@@ -365,8 +369,8 @@ hr.section::before {
 hr.balanced {
   border: 0;
   text-align: center;
-  height: calc(4 * var(--vmin) * 1.5);
-  margin: calc((4 * var(--vmin) * 1.5) / 2) 0;
+  height: calc(4 * var(--bmin) * 1.5);
+  margin: calc((4 * var(--bmin) * 1.5) / 2) 0;
 }
 
 hr.balanced::after {
@@ -382,9 +386,9 @@ hr.balanced::before {
 hr {
   border: 0;
   text-align: center;
-  margin: calc((4 * var(--vmin) * 1.5) / 2) 0;
+  margin: calc((4 * var(--bmin) * 1.5) / 2) 0;
   /* A break of one line only. */
-  border-bottom: calc(0.1 * var(--vmin)) dashed hsla(0, 0%, 50%, 0.5);
+  border-bottom: calc(0.1 * var(--bmin)) dashed hsla(0, 0%, 50%, 0.5);
 }
 
 /* Accessibility specific media queries go below. */

@@ -33,7 +33,7 @@
   "readme": "https://github.com/bookiza/bookiza.cli#readme",
   "author": "Marvin Danig <marvin@bubblin.io> (https://marvindanig.com)",
   "scripts": {
-    "postinstall": "node ./scripts/displayLicense.js"
+    "postinstall": "node ./scripts/displayLicense.mjs"
   },
   "bin": {
     "bookiza": "bin/bin.js",

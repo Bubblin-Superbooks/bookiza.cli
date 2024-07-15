@@ -1,19 +1,36 @@
-/* 	The CSS below is applied on all pages of the magazine.  
-*  	Simply set the path to background image on each page.CSS like so: 
-*
-*	Open `./manuscript/page-1/style.css` and paste just one line of code:
-*
-*		body{
-*			background-image: url(path/to/your/magazine/assets/images/page-1-(1115x1143-pixels)-image-file.jpg); 
-*		}
-*
-*	to render the background-image specific to page number 1. And so on. A more detailed template without using magazine images can be developed separately. Contribution is invited!
-*
+/*
+  Learn how a Superbook css layout template works at https://bubblin.io/scrolls/docs/layout.
 */
 
+:root {
+  --height: 100vmax;
+  --height: 100dvmax;
+  --width: 100vmin;
+  --bmin: calc(
+    var(--width) * 1 / 100
+  ); /* Matches the value of 1vmin in the context of an iframed page. */
+  --bmax: calc(var(--height) * 1 / 100);
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
 body, html {
-    height: 100vh;
-    width: 100vw;
+    height: 100vmax;
+    height: 100dvmax;
+    width: 100vmin;
     margin: 0 0;
     overflow: hidden;
     background-repeat: no-repeat;

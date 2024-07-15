@@ -1,0 +1,28 @@
+/*
+  Learn how a Superbook css layout template works at https://bubblin.io/scrolls/docs/layout.
+*/
+
+:root {
+  --height: 100vmax;
+  --height: 100dvmax;
+  --width: 100vmin;
+  --bmin: calc(
+    var(--width) * 1 / 100
+  ); /* Matches the value of 1vmin in the context of an iframed page. */
+  --bmax: calc(var(--height) * 1 / 100);
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
